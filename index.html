@@ -394,23 +394,7 @@ background-image: url('user.png');
 </div>
 <br><br><br><br><br><br><br><br><br><br><br>
 
-<script>
-document.getElementById("form").addEventListener("submit", function(e) {
-  e.preventDefault();
 
-  const texto = document.getElementById("opiniao").value;
-
-  fetch("/enviar", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ opiniao: texto })
-  });
-
-  alert("Opinião enviada!");
-});
-</script>
 <script>
 // animação scroll
 const sections = document.querySelectorAll('.section');
@@ -425,8 +409,7 @@ function mostrar() {
 window.addEventListener('scroll', mostrar);
 window.addEventListener('load', mostrar);
 
-// fogos (corrigido)
-const canvas = document.getElementById("fogos");
+// fogos (cortById("fogos");
 const ctx = canvas.getContext("2d");
 
 function resize() {
