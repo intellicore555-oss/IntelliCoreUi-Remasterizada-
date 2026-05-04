@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IntelliCore UI Remasterizada</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* SEÇÕES */
+.section {
+    position: relative;
+    min-height: 100vh;
+    padding: 60px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1s ease;
+    overflow: hidden;
+display: flex;
+align-items: center;
+}
+
+.section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* TEXTO */
+.section h1 {
+    font-size: 36px;
+    color: #ff4da6;
+    margin-bottom: 15px;
+}
+
+.section p {
+    max-width: 700px;
+    margin: 10px auto;
+    color: #ccc;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* SHAPES */
+.shape {
+    position: absolute;
+    opacity: 0.15;
+}
+
+.circle {
+    width: 200px;
+    height: 200px;
+    border: 2px solid #ff4da6;
+    border-radius: 50%;
+    top: 10%;
+    right: 10%;
+    animation: spin 20s linear infinite;
+}
+
+.line {
+    width: 300px;
+    height: 2px;
+    background: #ff4da6;
+    bottom: 20%;
+    left: -100px;
+    animation: moveLine 8s infinite alternate;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 100px solid #ff4da6;
+    top: 50%;
+    left: 70%;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* ANIMAÇÕES */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes moveLine {
+    to { transform: translateX(120px); }
+}
+
+@keyframes float {
+    50% { transform: translateY(-30px); }
+}
+
+/* BOTÃO */
+.btn-download {
+    margin-top: 40px;
+    padding: 18px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #ff4da6, #ff1e85);
+    border-radius: 100px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 0 25px #ff4da655;
+    animation: pulse 2s infinite, swing 3s infinite;
+margin-left: 20px;
+    margin-right: 20px;
+}
+
+@keyframes pulse {
+    50% { transform: scale(1.08); }
+}
+
+@keyframes swing {
+    25% { transform: rotate(2deg); }
+    75% { transform: rotate(-2deg); }
+}
+
+/* FOGOS */
+#fogos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#titulo {
+    position: relative;
+    z-index: 2;
+}
+
+/* Caixa do formulário */
+form {
+  background: #fbcfe8;
+  padding: 20px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  position: relative;
+  }
+
+/* Campo de texto */
+textarea {
+  width: 100%;
+  height: 120px;
+  resize: none;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 14px;
+  background: pink;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+/* Botão */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #db2777;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* Hover */
+button:hover {
+  background: #2563eb;
+}
+
+/* Clique */
+button:active {
+  transform: scale(0.98);
+}
+</style>
+
+<style>
+.box-form{
+  width: 90%;
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 16px;
+  background: #111;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  position: relative;
+}
+
+.box-form h2{
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.aviso{
+  color: #aaa;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.botao{
+  display: inline-block;
+  padding: 12px 20px;
+  background: skyblue;
+  color: #000;
+  font-weight: bold;
+  border-radius: 120px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.botao:hover{
+  background: #5cc7ff;
+  transform: scale(1.05);
+}
+
+.botao:active{
+  transform: scale(0.98);
+}
+
+
+.toggle {
+  width: 60%;
+  height: 55px;
+  background: #444;
+  border-radius: 80px;
+  padding: 5px;
+
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  z-index: 99980;
+}
+
+.alavanca {
+  background: #666;
+  width: 50%;
+  height: 100%;
+  border-radius: 80px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: transform 0.3s ease;
+}
+
+svg {
+  width: 32px;
+  height: 32px;
+}
+
+.icon2 {
+  display: none;
+}
+
+/* 🔥 animações */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.hidden {
+  opacity: 0 !important;
+  pointer-events: none;
+  transform: translateY(40px) scale(0.95);
+  transition: all 0.4s ease;
+}
+
+#section1 {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 600%;
+  z-index: 9998;
+ top: -145%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(40px);
+
+  transition: all 0.4s ease;
+}
+
+/* quando ativa */
+#section1.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+</style>
+
+</head>
+
+<body>
+
+</div>
+
+<!-- SEÇÃO 1 -->
+<div class="section">
+    <div class="shape circle"></div>
+    <div>
+        <h1>Chegou o...</h1>
+        <p>Amiga… respira fundo porque isso aqui tá surreal 😳</p>
+        <p>Não é aquele app básico não, é aquele nível que você abre e já sente: “ok… isso aqui foi feito pra mim”.</p>
+        <p>Fluído, bonito, direto… sem enrolação e sem dor de cabeça.</p>
+    </div>
+</div>
+
+<!-- SEÇÃO 2 -->
+<div class="section">
+    <div class="shape triangle"></div>
+    <canvas id="fogos"></canvas>
+
+    <div>
+        <h1 id="titulo">IntelliCore UI Remasterizada</h1>
+        <p>Bubu… isso aqui não é atualização, é transformação completa 💅</p>
+        <p>Tudo foi refeito do zero pensando em você usar rápido, sem travar, sem se perder.</p>
+        <p>Cada detalhe foi pensado pra ser leve, intuitivo e simplesmente gostoso de usar.</p>
+        <p>Sabe quando tudo só faz sentido? então… é exatamente isso.</p>
+    </div>
+</div>
+
+<!-- SEÇÃO 3 -->
+<div class="section">
+    <div class="shape line"></div>
+    <div>
+        <h1>Como funciona</h1>
+        <p>Aqui quem manda é você, diva.</p>
+        <p>Você configura tudo antes e usa quando quiser, sem nada acontecendo escondido.</p>
+        <p>Zero susto, zero bug estranho, zero coisa automática.</p>
+        <p>É você no controle o tempo todo, do jeitinho que tem que ser.</p>
+    </div>
+</div>
+
+<!-- SEÇÃO 4 -->
+<div class="section">
+    <div class="shape triangle"></div>
+    <div>
+        <h1>Botão principal</h1>
+        <p>Grande, bonito e impossível de errar.</p>
+        <p>Um toque e pronto… você já resolve o que precisa.</p>
+        <p>Sem ficar caçando função, sem perder tempo.</p>
+        <p>É direto, rápido e funciona de verdade.</p>
+    </div>
+</div>
+
+<!-- SEÇÃO 5 -->
+<div class="section">
+    <div class="shape circle"></div>
+    <div>
+        <h1>Controle total</h1>
+        <p>Nada acontece sem você deixar, princesa.</p>
+        <p>Todas as permissões são suas, você escolhe tudo.</p>
+        <p>Quer tirar? tira. Quer usar? usa.</p>
+        <p>Simples, transparente e sem pegadinha.</p>
+    </div>
+</div>
+
+<!-- SEÇÃO 6 -->
+<div class="section">
+    <div class="shape line"></div>
+    <div>
+        <h1>Privacidade real</h1>
+        <p>Aqui não tem essa de ficar mandando seus dados por aí não.</p>
+        <p>Tudo fica no seu celular, quietinho e seguro.</p>
+        <p>Sem rastreamento, sem anúncios, sem coisa suspeita.</p>
+        <p>É você e o app. Só isso.</p>
+    </div>
+</div>
+
+<div class="section">
+    <div class="shape circle"></div>
+    <div>
+        <h1>Totalmente grátis e livre de anúncios</h1>
+<p>Para você aproveitar sem interrupções e nao pagar nada, totalmente moldado aos seus gostos!<p>
+</div>
+</div>
+<!-- FINAL -->
+<div class="section" id="section1">
+    <div class="shape triangle"></div>
+    <div>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+        <h1>Então, o que me diz?</h1>
+        <p>Porque depois disso aqui… não tem mais como usar coisa básica não 😮‍🔥</p>
+        <p>Se prepara pra uma experiência que realmente funciona.</p>
+
+        <h1 style="margin-top:20px;">Tá pronta, princesa?</h1>
+        <p>Então vem sentir isso aqui na prática 💖</p>
+<p style="color: red;">Mas ó: ele não substitui órgãos oficiais e números oficiais do governo e outros, na verdade ele só funciona porque chama eles miga!!!<p>
+
+<a class="btn-download" href="IntelliCoreUi Remasterizada.apk" download>
+    Baixe agora <br>
+    Versão 1
+</a>
+
+<a class="btn-download" href="IntelliCoreUi Remasterizada1.apk" download>
+    Baixe agora <br>
+    Versão 2
+</a>
+
+<a class="btn-download" href="IntelliCoreUi Remasterizada2.apk" download>
+    Baixe agora <br>
+    Versão 3
+</a>
+
+<a class="btn-download" href="IntelliCoreUi Remasterizada3.apk" download>
+    Baixe agora <br>
+    Versão 4
+</a>
+
+<a class="btn-download" href="IntelliCoreUi Remasterizada4.apk" download>
+    Baixe agora <br>
+    Versão 5
+</a>
+
+  <div class="box-form">
+  <h2>Queremos saber sua opinião!</h2>
+
+  <p class="aviso">
+    Aviso: ele usa Google Forms, não me responsabilizo se ele sair do ar!!!
+  </p>
+
+<a class="botao" href="https://docs.google.com/forms/d/e/1FAIpQLScgGSzfN_rG_1jwE5DDcGXPkwDYiANIoFvssBYNvPJTCyrK4A/viewform?usp=header" target="_blank">
+    Abrir formulário
+  </a>
+</div>
+    </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br>
+        
+      
+    </div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br>
+
+
+<br><br><br><br><br><br><br><br><br><br><br>
+
+<!-- BARRA INFERIOR ONE UI -->
+<div class="toggle" id="puxador">
+  <div class="alavanca" id="puxar">
+
+<svg class="icon1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 7C12.8284 7 13.5 6.32843 13.5 5.5C13.5 4.67157 12.8284 4 12 4C11.1716 4 10.5 4.67157 10.5 5.5C10.5 6.32843 11.1716 7 12 7ZM11 9C10.4477 9 10 9.44772 10 10C10 10.5523 10.4477 11 11 11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V10C13 9.44772 12.5523 9 12 9H11Z" fill="#ffffff"></path> </g></svg>
+
+<svg class="icon2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#00ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487" stroke="#00ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+
+  </div>
+</div>
+
+<script>
+// ================= SCROLL ANIMAÇÃO =================
+const sections = document.querySelectorAll('.section');
+
+function mostrar() {
+    const trigger = window.innerHeight * 0.85;
+
+    sections.forEach(sec => {
+        if (sec.getBoundingClientRect().top < trigger) {
+            sec.classList.add('show');
+        }
+    });
+}
+
+window.addEventListener('scroll', mostrar);
+window.addEventListener('load', mostrar);
+
+
+// ================= FOGOS =================
+const canvas = document.getElementById("fogos");
+
+if (canvas) {
+    const ctx = canvas.getContext("2d");
+
+    function resize() {
+        const parent = canvas.parentElement;
+        canvas.width = parent.offsetWidth;
+        canvas.height = parent.offsetHeight;
+    }
+
+    resize();
+    window.addEventListener("resize", resize);
+
+    let fogos = [];
+
+    function explodir(x, y) {
+        for (let i = 0; i < 30; i++) {
+            fogos.push({
+                x, y,
+                dx: (Math.random() - 0.5) * 6,
+                dy: (Math.random() - 0.5) * 6,
+                alpha: 1
+            });
+        }
+    }
+
+    function animar() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        fogos.forEach((p, i) => {
+            p.x += p.dx;
+            p.y += p.dy;
+            p.alpha -= 0.02;
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255,105,180,${p.alpha})`;
+            ctx.fill();
+
+            if (p.alpha <= 0) fogos.splice(i, 1);
+        });
+
+        requestAnimationFrame(animar);
+    }
+
+    setInterval(() => {
+        explodir(
+            Math.random() * canvas.width,
+            Math.random() * (canvas.height / 2)
+        );
+    }, 800);
+
+    animar();
+}
+
+
+// ================= TOGGLE SECTION1 =================
+const toggle = document.getElementById("puxador");
+const alavanca = document.getElementById("puxar");
+const icon1 = document.querySelector(".icon1");
+const icon2 = document.querySelector(".icon2");
+
+const section1 = document.getElementById("section1");
+const formSection = document.getElementById("formSection");
+
+let ligado = false;
+
+// começa escondido
+section1.classList.remove("active");
+if (formSection) formSection.classList.remove("active");
+
+toggle.addEventListener("click", function() {
+  ligado = !ligado;
+  
+  if (ligado) {
+  // 🔥 sobe pro topo
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  // esconde tudo menos section1
+  sections.forEach(sec => {
+    if (sec.id !== "section1") {
+      sec.classList.add("hidden");
+    }
+  });
+
+  // mostra section1
+  section1.classList.add("active");
+
+} else {
+  section1.classList.remove("active");
+
+  sections.forEach(sec => {
+    sec.classList.remove("hidden");
+  });
+}
+
+  // anima alavanca
+  alavanca.style.transform = ligado
+    ? "translateX(100%)"
+    : "translateX(0)";
+
+  // troca ícones
+  icon1.style.display = ligado ? "none" : "block";
+  icon2.style.display = ligado ? "block" : "none";
+
+  if (ligado) {
+    // esconde tudo menos section1
+    sections.forEach(sec => {
+      if (sec.id !== "section1") {
+        sec.classList.add("hidden");
+      }
+    });
+
+    // mostra section1
+    section1.classList.add("active");
+
+  } else {
+    // remove section1
+    section1.classList.remove("active");
+
+    // volta tudo
+    sections.forEach(sec => {
+      sec.classList.remove("hidden");
+    });
+  }
+});
+
+
+// ================= FORMULÁRIO =================
+// ================= FORMULÁRIO =================
+
+</script>
+
+<script>
+window.onload = function() {
+    if (!localStorage.getItem("aceitouTermos")) {
+        window.location.href = "termos.html";
+    }
+};
+</script>
+
+</body>
+</html>
