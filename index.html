@@ -7,6 +7,9 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
 
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000">
+
 <style>
 * {
     margin: 0;
@@ -643,6 +646,12 @@ window.onload = function() {
         window.location.href = "termos.html";
     }
 };
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
 </script>
 
 </body>
