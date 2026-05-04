@@ -225,7 +225,7 @@ Este aplicativo foi desenvolvido como uma ferramenta de apoio e não substitui s
    
 </div>
 
-<button class="botao" onclick="irHome()">Bora lá!</button>
+<button onclick="aceitar()" class="botao">Bora lá!</button>
 
 <div class="footer">
     Ao continuar, você concorda com os termos descritos acima.
@@ -240,11 +240,10 @@ Este aplicativo foi desenvolvido como uma ferramenta de apoio e não substitui s
 </div>
 
 <script>
-function irHome() {
-    localStorage.setItem("aceitouTermos", "true");
-    window.location.href = "index.html";
+function aceitar() {
+  localStorage.setItem("termosAceitos", "sim");
+  window.location.href = "index.html";
 }
 </script>
-
 </body>
 </html>
