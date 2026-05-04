@@ -3,430 +3,249 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IntelliCore UI Remasterizada</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap" rel="stylesheet">
-
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#000">
+<title>Termos e Privacidade</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap" rel="stylesheet"> 
 
 <style>
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Quicksand', sans-serif;
+font-family: 'Quicksand', sans-serif;
 }
 
 body {
     background: #000;
-    color: #fff;
-    overflow-x: hidden;
+    color: #eaeaea;
+    padding: 20px;
 }
 
-/* SEÇÕES */
-.section {
-    position: relative;
-    min-height: 100vh;
-    padding: 60px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.header {
     text-align: center;
-
-    opacity: 0;
-    transform: translateY(60px);
-    transition: all 0.4s ease;
-    overflow: hidden;
+    margin-bottom: 30px;
 }
 
-.section.show {
-    opacity: 1;
-    transform: translateY(0);
+.header h1 {
+    color: #ff4d6d;
+    font-size: 28px;
 }
 
-/* TEXTO */
-.section h1 {
-    font-size: 36px;
-    color: #ff4da6;
+.header p {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.card {
+    background: #FFF0F5;
+    border: 2px solid #FFA6C9;
+    border-radius: 16px;
+    padding: 18px;
     margin-bottom: 15px;
+    backdrop-filter: blur(10px);
 }
 
-.section p {
-    max-width: 700px;
-    margin: 10px auto;
-    color: #ccc;
+.card h2 {
+    color: #ff4d6d;
     font-size: 16px;
-    line-height: 1.7;
+    margin-bottom: 8px;
 }
 
-/* SHAPES */
-.shape {
-    position: absolute;
-    opacity: 0.15;
+.card p {
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 8px;
 }
 
-.circle {
-    width: 200px;
-    height: 200px;
-    border: 2px solid #ff4da6;
-    border-radius: 50%;
-    top: 10%;
-    right: 10%;
-    animation: spin 20s linear infinite;
+ul {
+    margin-top: 8px;
+    padding-left: 18px;
+color: #000;
 }
 
-.line {
-    width: 300px;
-    height: 2px;
-    background: #ff4da6;
-    bottom: 20%;
-    left: -100px;
-    animation: moveLine 8s infinite alternate;
+li {
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #000;
 }
 
-.triangle {
-    width: 0;
-    height: 0;
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
-    border-bottom: 100px solid #ff4da6;
-    top: 50%;
-    left: 70%;
-    animation: float 6s ease-in-out infinite;
-}
-
-/* ANIMAÇÕES */
-@keyframes spin { to { transform: rotate(360deg); } }
-@keyframes moveLine { to { transform: translateX(120px); } }
-@keyframes float { 50% { transform: translateY(-30px); } }
-
-/* BOTÃO */
-.btn-download {
-    margin-top: 40px;
-    padding: 18px 40px;
-    font-size: 18px;
-    font-weight: 600;
-    color: #fff;
-    background: linear-gradient(135deg, #ff4da6, #ff1e85);
-    border-radius: 100px;
-    text-decoration: none;
-    display: inline-block;
-    box-shadow: 0 0 25px #ff4da655;
-    animation: pulse 2s infinite, swing 3s infinite;
-    margin: 10px;
-}
-
-@keyframes pulse { 50% { transform: scale(1.08); } }
-@keyframes swing {
-    25% { transform: rotate(2deg); }
-    75% { transform: rotate(-2deg); }
-}
-
-/* FOGOS */
-#fogos {
-    position: absolute;
+.botao {
+    margin-top: 25px;
     width: 100%;
-    height: 100%;
-    pointer-events: none;
+    padding: 16px;
+    border: none;
+    border-radius: 140px;
+    font-size: 16px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ff4d6d, #ff1e4d);
+    color: white;
+    cursor: pointer;
 }
 
-/* FORM */
-.box-form{
-  width: 90%;
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 20px;
-  border-radius: 16px;
-  background: #111;
-  text-align: center;
+.botao:active {
+    transform: scale(0.97);
 }
 
-.botao{
-  display: inline-block;
-  padding: 12px 20px;
-  background: skyblue;
-  color: #000;
-  font-weight: bold;
-  border-radius: 120px;
-  text-decoration: none;
-}
-
-/* TOGGLE */
-.toggle {
-  width: 60%;
-  height: 55px;
-  background: #444;
-  border-radius: 80px;
-  padding: 5px;
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  z-index: 9999;
-}
-
-.alavanca {
-  background: #666;
-  width: 50%;
-  height: 100%;
-  border-radius: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
-
-.icon2 { display: none; }
-
-.hidden {
-  opacity: 0 !important;
-  pointer-events: none;
-}
-
-/* SECTION FINAL */
-
-
-svg {
-width: 30px;
-height: 30px;
-}
-
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999999;
-}
-
-.popup.active {
-  display: flex;
-}
-
-.popup-box {
-  background: #000;
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
-  color: #fff;
-  animation: aparecer 0.4s ease;
-}
-
-.btn {
-  margin-top: 20px;
-  padding: 12px 20px;
-  background: #ff4da6;
-  border: none;
-  color: #fff;
-  border-radius: 100px;
-  font-weight: bold;
-}
-
-@keyframes aparecer {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #777;
+    text-align: center;
 }
 </style>
 </head>
 
 <body>
 
-<!-- SEÇÕES (mantidas iguais) -->
-<div class="section">
-    <div class="shape circle"></div>
-    <div>
-        <h1>Chegou o...</h1>
-        <p>Amiga… respira fundo porque isso aqui tá surreal 😳</p>
-        <p>Não é aquele app básico não, é aquele nível que você abre e já sente: “ok… isso aqui foi feito pra mim”.</p>
-        <p>Fluído, bonito, direto… sem enrolação e sem dor de cabeça.</p>
-    </div>
+<div class="container">
+
+<div class="header">
+    <h1>Termos de Uso e Política de Privacidade</h1>
+    <p>Segurança, transparência e controle total para a usuária</p>
 </div>
 
-
-<div class="section">
-    <div class="shape triangle"></div>
-    <canvas id="fogos"></canvas>
-    <div>
-        <h1 id="titulo">IntelliCore UI Remasterizada</h1>
-        <p>Bubu… isso aqui não é atualização, é transformação completa 💅</p>
-        <p>Tudo foi refeito do zero pensando em você usar rápido, sem travar, sem se perder.</p>
-        <p>Cada detalhe foi pensado pra ser leve, intuitivo e simplesmente gostoso de usar.</p>
-        <p>Sabe quando tudo só faz sentido? então… é exatamente isso.</p>
-    </div>
+<div class="card">
+    <h2>1. Uso do Aplicativo</h2>
+    <p>Este aplicativo foi desenvolvido com o objetivo principal de oferecer suporte, segurança e proteção para mulheres em situações de risco.</p>
+    <p>O uso é totalmente gratuito e destinado exclusivamente à segurança pessoal. Ao utilizar o aplicativo, a usuária declara estar ciente e de acordo com os termos aqui descritos.</p>
 </div>
 
-<div class="section">
-    <div class="shape line"></div>
-    <div>
-        <h1>Como funciona</h1>
-        <p>Aqui quem manda é você, diva.</p>
-        <p>Você configura tudo antes e usa quando quiser, sem nada acontecendo escondido.</p>
-        <p>Zero susto, zero bug estranho, zero coisa automática.</p>
-        <p>É você no controle o tempo todo, do jeitinho que tem que ser.</p>
-    </div>
+<div class="card">
+    <h2>2. Permissões do Dispositivo</h2>
+    <p>O aplicativo solicita apenas permissões essenciais para seu funcionamento, sempre respeitando o consentimento da usuária.</p>
+
+    <ul>
+        <li>Acesso ao telefone (ligações)</li>
+        <li>Localização do dispositivo</li>
+    </ul>
+
+    <p>Nenhuma dessas permissões é utilizada sem autorização explícita. A usuária pode conceder ou revogar permissões a qualquer momento nas configurações do dispositivo.</p>
 </div>
 
-<div class="section">
-    <div class="shape triangle"></div>
-    <div>
-        <h1>Botão principal</h1>
-        <p>Grande, bonito e impossível de errar.</p>
-        <p>Um toque e pronto… você já resolve o que precisa.</p>
-        <p>Sem ficar caçando função, sem perder tempo.</p>
-        <p>É direto, rápido e funciona de verdade.</p>
-    </div>
+<div class="card">
+    <h2>3. Botão de Pânico</h2>
+    <p>O aplicativo possui um botão de pânico destinado a situações emergenciais, permitindo ações rápidas para proteção da usuária.</p>
+
+    <ul>
+        <li>Todas as ações são iniciadas manualmente pela usuária. O aplicativo não realiza envios automáticos de mensagens ou chamadas sem confirmação.</li>
+        <li>Outras ações exigem confirmação manual da usuária</li>
+        <li>Ligações são realizadas através do aplicativo nativo de telefone</li>
+    </ul>
+
+    <p>O objetivo é garantir rapidez sem comprometer o controle da usuária sobre suas ações.</p>
 </div>
 
-<div class="section">
-    <div class="shape circle"></div>
-    <div>
-        <h1>Controle total</h1>
-        <p>Nada acontece sem você deixar, princesa.</p>
-        <p>Todas as permissões são suas, você escolhe tudo.</p>
-        <p>Quer tirar? tira. Quer usar? usa.</p>
-        <p>Simples, transparente e sem pegadinha.</p>
-    </div>
+<div class="card">
+    <h2>4. Armazenamento de Dados</h2>
+    <p>Os dados utilizados pelo aplicativo são armazenados exclusivamente no dispositivo da usuária.</p>
+
+    <ul>
+        <li>LocalStorage (camada web)</li>
+        <li>Arquivos locais (assets do aplicativo)</li>
+        <li>Camada nativa Android</li>
+    </ul>
+
+    <p>Não há envio de dados para servidores externos, garantindo maior privacidade e controle total sobre as informações.</p>
 </div>
 
-<div class="section">
-    <div class="shape line"></div>
-    <div>
-        <h1>Privacidade real</h1>
-        <p>Aqui não tem essa de ficar mandando seus dados por aí não.</p>
-        <p>Tudo fica no seu celular, quietinho e seguro.</p>
-        <p>Sem rastreamento, sem anúncios, sem coisa suspeita.</p>
-        <p>É você e o app. Só isso.</p>
-    </div>
+<div class="card">
+    <h2>5. Segurança e Acesso</h2>
+    <p>O acesso ao aplicativo é protegido por mecanismos de segurança do próprio dispositivo.</p>
+
+    <ul>
+        <li>Credenciais do dispositivo (PIN, senha ou padrão)</li>
+        <li>Biometria via BiometricPrompt (nível weak)</li>
+    </ul>
+
+    <p>Essas medidas impedem acesso não autorizado e reforçam a proteção das informações da usuária.</p>
 </div>
 
-<div class="section">
-    <div class="shape circle"></div>
-    <div>
-        <h1>Totalmente grátis e livre de anúncios</h1>
-<p>Para você aproveitar sem interrupções e nao pagar nada, totalmente moldado aos seus gostos!<p>
-</div>
-</div>
+<div class="card">
+    <h2>6. Privacidade</h2>
+    <p>O aplicativo respeita integralmente a privacidade da usuária.</p>
 
-
-
-
-<!-- BARRA INFERIOR ONE UI -->
-<div class="toggle" id="puxador">
-  <div class="alavanca" id="puxar">
-
-<svg class="icon1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 7C12.8284 7 13.5 6.32843 13.5 5.5C13.5 4.67157 12.8284 4 12 4C11.1716 4 10.5 4.67157 10.5 5.5C10.5 6.32843 11.1716 7 12 7ZM11 9C10.4477 9 10 9.44772 10 10C10 10.5523 10.4477 11 11 11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V10C13 9.44772 12.5523 9 12 9H11Z" fill="#ffffff"></path> </g></svg>
-
-<svg class="icon2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 3V16M12 16L16 11.625M12 16L8 11.625" stroke="#00ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M15 21H9C6.17157 21 4.75736 21 3.87868 20.1213C3 19.2426 3 17.8284 3 15M21 15C21 17.8284 21 19.2426 20.1213 20.1213C19.8215 20.4211 19.4594 20.6186 19 20.7487" stroke="#00ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-
-  </div>
+    <ul>
+        <li>Não coleta dados desnecessários</li>
+        <li>Não compartilha informações com terceiros</li>
+        <li>Não possui rastreamento</li>
+        <li>Não exibe anúncios</li>
+    </ul>
 </div>
 
-<div id="popup-termos" class="popup">
-  <div class="popup-box">
-    <h2>Para continuar</h2>
-    <p>Você precisa aceitar os termos e políticas.</p>
+<div class="card">
+    <h2>7. Uso de Permissões Sensíveis</h2>
+    <p>Permissões como chamadas e localização são consideradas sensíveis e são utilizadas apenas quando estritamente necessário para o funcionamento das funcionalidades principais do aplicativo.</p>
 
-    <button onclick="irParaTermos()" class="btn">
-      Ver termos
-    </button>
-  </div>
+    <p>O uso dessas permissões segue as diretrizes da plataforma Android, garantindo uso responsável e limitado.</p>
+</div>
+
+<div class="card">
+    <h2>8. Responsabilidade</h2>
+    <p>O funcionamento do aplicativo depende diretamente de permissões concedidas pela usuária e de ações realizadas manualmente dentro do sistema.</p>
+
+    <p>Dessa forma, o aplicativo não se responsabiliza por quaisquer danos, falhas, atrasos, indisponibilidades ou situações decorrentes do uso, mau uso ou limitações do dispositivo, incluindo falhas de hardware, software ou rede.</p>
+    
+        <p><strong>Melhorias, Limitações e Responsabilidade do Aplicativo</strong></p>
+
+<p>Este aplicativo foi desenvolvido com o objetivo de oferecer suporte e auxílio em situações de risco, com foco em privacidade, controle da usuária e uso consciente das funcionalidades.</p>
+
+<p>A proposta é servir como uma ferramenta complementar, e não como substituto de serviços oficiais de emergência.</p>
+
+<p>O sistema prioriza o armazenamento local de dados, não utiliza rastreamento e garante que todas as ações sejam iniciadas com controle da usuária.</p>
+
+<p>No entanto, por se tratar de um contexto sensível, existem limitações importantes.</p>
+
+<p>Não é prometida segurança imediata ou resposta rápida, pois isso depende de órgãos oficiais, do funcionamento do dispositivo, da rede e de outros fatores externos.</p>
+
+<p>Em situações reais de emergência, a usuária pode não conseguir interagir com o aplicativo, confirmar ações ou utilizar o dispositivo livremente.</p>
+
+<p>O botão de pânico foi pensado para manter o controle da usuária, mas pode ser ajustado futuramente para incluir modos mais rápidos ou automáticos, conforme preferência configurável.</p>
+
+<p>Embora a privacidade seja uma prioridade, dados armazenados localmente podem estar acessíveis caso o dispositivo seja comprometido, sendo recomendadas medidas adicionais como bloqueio do aparelho.</p>
+
+<p>O uso de localização depende das permissões concedidas e das condições do ambiente, podendo apresentar limitações em locais fechados ou com sinal reduzido.</p>
+
+<p>O aplicativo não substitui polícia, serviços médicos ou qualquer outro órgão oficial de proteção, sendo apenas um recurso auxiliar.</p>
+
+<p>Ao utilizar o aplicativo, a usuária reconhece essas limitações e compreende que seu funcionamento pode variar conforme o dispositivo, permissões e condições externas.</p>
+
+<p style="color:#ff4d6d; font-size:14px; margin-top:10px;">
+Este aplicativo foi desenvolvido como uma ferramenta de apoio e não substitui serviços oficiais de emergência, como polícia, atendimento médico ou órgãos governamentais. Não é feita qualquer promessa de segurança, proteção imediata ou resposta em situações de risco. O funcionamento depende de fatores externos, como permissões concedidas, condições do dispositivo, rede e ação da própria usuária. Em caso de emergência real, procure imediatamente os serviços oficiais competentes.
+
+<br><br>
+
+“Este aplicativo não deve ser utilizado como único meio de segurança em situações de emergência.”
+</p>
+</div>
+
+<div class="card">
+    <h2>9. Aceitação dos Termos</h2>
+    <p>Ao utilizar o aplicativo, a usuária declara que leu, compreendeu e concorda integralmente com todos os termos e condições descritos nesta página.</p>
+    
+   
+</div>
+
+<button onclick="aceitar()" class="botao">Bora lá!</button>
+
+<div class="footer">
+    Ao continuar, você concorda com os termos descritos acima.
+    <br>
+    O aplicativo não envia mensagens automaticamente. Todas as ações são confirmadas pela usuária através dos aplicativos padrão do dispositivo.
+    <br>
+    O aplicativo não executa ações em segundo plano sem o conhecimento da usuária.
+</div>
+
 </div>
 
 <script>
-// ================= SECTIONS (SCROLL) =================
-const sections = document.querySelectorAll('.section');
-
-function mostrar() {
-    const trigger = window.innerHeight * 0.85;
-
-    sections.forEach(sec => {
-        if (sec.getBoundingClientRect().top < trigger) {
-            sec.classList.add('show');
-        }
-    });
-}
-
-window.addEventListener('scroll', mostrar);
-window.addEventListener('load', mostrar);
-
-
-// ================= TOGGLE (PÁGINAS) =================
-const toggle = document.getElementById("puxador");
-const alavanca = document.getElementById("puxar");
-const icon1 = document.querySelector(".icon1");
-const icon2 = document.querySelector(".icon2");
-
-let paginaAtual = window.location.pathname.split("/").pop();
-
-// 🔥 FORÇA começar na opção 1
-let ligado = false;
-
-// aplica estado visual
-function aplicarEstado() {
-  if (ligado) {
-    alavanca.style.transform = "translateX(100%)";
-    icon1.style.display = "none";
-    icon2.style.display = "block";
-  } else {
-    alavanca.style.transform = "translateX(0)";
-    icon1.style.display = "block";
-    icon2.style.display = "none";
-  }
-}
-
-// aplica ao carregar
-aplicarEstado();
-
-// clique
-toggle.onclick = () => {
-  ligado = !ligado;
-
-  aplicarEstado();
-
-  document.body.style.transition = "opacity 0.3s ease";
-  sections.forEach(sec => {
-  sec.style.opacity = "0";
-});
-
-  setTimeout(() => {
-    if (paginaAtual === "index.html" || paginaAtual === "") {
-      window.location.href = "index1.html";
-    } else {
-      window.location.href = "index.html";
-    }
-  }, 300);
-};
-</script>
-
-<script>
-const popup = document.getElementById("popup-termos");
-
-window.addEventListener("load", () => {
-  if (localStorage.getItem("termosAceitos") !== "sim") {
-    popup.classList.add("active");
-    document.body.style.overflow = "hidden";
-  }
-});
-
-// botão
-function irParaTermos() {
-  window.location.href = "termos.html";
+function aceitar() {
+  localStorage.setItem("termosAceitos", "sim");
+  window.location.href = "index.html";
 }
 </script>
-
 </body>
 </html>
