@@ -22,44 +22,36 @@ export default async function handler(req, res) {
     let doc = await collection.findOne({ name: "visitas" });
 
     if (!doc) {
-      doc = { name: "visitas", value: 0 };
-      await collection.insertOne(doc);
+      await collection.insertOne({ name: "visitas", value: 0 });
     }
 
-    // 👀 GET → só mostra
+    // 👀 GET → mostrar visitas
     if (req.method === "GET") {
+      const atualizado = await collection.findOne({ name: "visitas" });
+
       res.setHeader("Access-Control-Allow-Origin", "*");
-      return res.status(200).json({ visitas: doc.value });
+      return res.status(200).json({ visitas: atualizado.value });
     }
 
-    // ➕ POST → incrementa (e pode proteger)
+    // ➕ POST → incrementar visitas
     if (req.method === "POST") {
-      const origin = req.headers.origin || "";
-      const referer = req.headers.referer || "";
+      // 🔓 liberar geral (depois você pode restringir)
+      res.setHeader("Access-Control-Allow-Origin", "*");
 
-      const permitido =
-        origin.includes("seuusuario.github.io") ||
-        referer.includes("seuusuario.github.io");
-
-      if (!permitido) {
-        return res.status(403).json({ erro: "Acesso negado" });
-      }
-
-      res.setHeader("Access-Control-Allow-Origin", "https://seuusuario.github.io");
-
-      const novoValor = doc.value + 1;
-
+      // 🔥 incremento correto (evita erro de contagem)
       await collection.updateOne(
         { name: "visitas" },
-        { $set: { value: novoValor } }
+        { $inc: { value: 1 } }
       );
 
-      return res.status(200).json({ visitas: novoValor });
+      const atualizado = await collection.findOne({ name: "visitas" });
+
+      return res.status(200).json({ visitas: atualizado.value });
     }
 
     return res.status(405).json({ erro: "Método não permitido" });
 
   } catch (error) {
-    res.status(500).json({ erro: error.message });
+    return res.status(500).json({ erro: error.message });
   }
 }
