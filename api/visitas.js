@@ -1,9 +1,12 @@
 import { MongoClient } from "mongodb";
 
-const uri = "SUA_URL_AQUI";
+const uri = "mongodb+srv://intellicore555_db_user:299792458anjinho%40@cluster0.gnh9bcl.mongodb.net/meusite?retryWrites=true&w=majority";
+
 const client = new MongoClient(uri);
 
 export default async function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
   await client.connect();
 
   const db = client.db("meusite");
@@ -22,8 +25,6 @@ export default async function handler(req, res) {
     { name: "visitas" },
     { $set: { value: doc.value } }
   );
-
-  res.setHeader("Access-Control-Allow-Origin", "*");
 
   res.status(200).json({ visitas: doc.value });
 }
