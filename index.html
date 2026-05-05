@@ -514,5 +514,24 @@ function irParaTermos() {
 }
 </script>
 
+<script>
+const url = "https://intelli-core-ui-remasterizada.vercel.app/api/visitas";
+
+// ➕ Conta visita (só GitHub)
+fetch(url, {
+  method: "POST",
+  headers: {
+    "x-source": "github"
+  }
+})
+.then(res => res.json())
+.then(data => {
+  console.log("Visitas:", data.visitas);
+})
+.catch(err => {
+  console.error("Erro ao contar visita:", err);
+});
+</script>
+
 </body>
 </html>
