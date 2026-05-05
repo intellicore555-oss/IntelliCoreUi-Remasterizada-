@@ -13,8 +13,6 @@ if (!global._mongoClientPromise) {
 clientPromise = global._mongoClientPromise;
 
 export default async function handler(req, res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-
   try {
     const client = await clientPromise;
 
@@ -28,14 +26,38 @@ export default async function handler(req, res) {
       await collection.insertOne(doc);
     }
 
-    doc.value++;
+    // 👀 GET → só mostra
+    if (req.method === "GET") {
+      res.setHeader("Access-Control-Allow-Origin", "*");
+      return res.status(200).json({ visitas: doc.value });
+    }
 
-    await collection.updateOne(
-      { name: "visitas" },
-      { $set: { value: doc.value } }
-    );
+    // ➕ POST → incrementa (e pode proteger)
+    if (req.method === "POST") {
+      const origin = req.headers.origin || "";
+      const referer = req.headers.referer || "";
 
-    res.status(200).json({ visitas: doc.value });
+      const permitido =
+        origin.includes("seuusuario.github.io") ||
+        referer.includes("seuusuario.github.io");
+
+      if (!permitido) {
+        return res.status(403).json({ erro: "Acesso negado" });
+      }
+
+      res.setHeader("Access-Control-Allow-Origin", "https://seuusuario.github.io");
+
+      const novoValor = doc.value + 1;
+
+      await collection.updateOne(
+        { name: "visitas" },
+        { $set: { value: novoValor } }
+      );
+
+      return res.status(200).json({ visitas: novoValor });
+    }
+
+    return res.status(405).json({ erro: "Método não permitido" });
 
   } catch (error) {
     res.status(500).json({ erro: error.message });
