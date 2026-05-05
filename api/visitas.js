@@ -33,16 +33,24 @@ export default async function handler(req, res) {
       return res.status(200).json({ visitas: atualizado.value });
     }
 
-    // ➕ POST → incrementar visitas
+    // ➕ POST → incrementar só se for GitHub
     if (req.method === "POST") {
-      // 🔓 liberar geral (depois você pode restringir)
+      const origin = req.headers.origin || "";
+      const referer = req.headers.referer || "";
+
+      const vindoDoGithub =
+        origin.includes("github.io") ||
+        referer.includes("github.io");
+
       res.setHeader("Access-Control-Allow-Origin", "*");
 
-      // 🔥 incremento correto (evita erro de contagem)
-      await collection.updateOne(
-        { name: "visitas" },
-        { $inc: { value: 1 } }
-      );
+      // 🔥 só incrementa se for GitHub
+      if (vindoDoGithub) {
+        await collection.updateOne(
+          { name: "visitas" },
+          { $inc: { value: 1 } }
+        );
+      }
 
       const atualizado = await collection.findOne({ name: "visitas" });
 
