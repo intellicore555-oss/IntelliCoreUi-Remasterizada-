@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const uri = "mongodb+srv://intellicore555_db_user:299792@cluster0.gnh9bcl.mongodb.net/meusite?retryWrites=true&w=majority";
+const uri = process.env.MONGO_URI;
 
 let client;
 let clientPromise;
@@ -13,31 +13,47 @@ if (!global._mongoClientPromise) {
 clientPromise = global._mongoClientPromise;
 
 export default async function handler(req, res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  const client = await clientPromise;
+  const db = client.db("meusite");
+  const collection = db.collection("contador");
 
-  try {
-    const client = await clientPromise;
+  let doc = await collection.findOne({ name: "visitas" });
 
-    const db = client.db("meusite");
-    const collection = db.collection("contador");
+  if (!doc) {
+    doc = { name: "visitas", value: 0 };
+    await collection.insertOne(doc);
+  }
 
-    let doc = await collection.findOne({ name: "visitas" });
+  // 🟢 GET → só retorna (não soma)
+  if (req.method === "GET") {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    return res.status(200).json({ visitas: doc.value });
+  }
 
-    if (!doc) {
-      doc = { name: "visitas", value: 0 };
-      await collection.insertOne(doc);
+  // 🔒 POST → só seu site pode somar
+  if (req.method === "POST") {
+    const origin = req.headers.origin || "";
+    const referer = req.headers.referer || "";
+
+    const permitido =
+      origin.includes("seuusuario.github.io") ||
+      referer.includes("seuusuario.github.io");
+
+    if (!permitido) {
+      return res.status(403).json({ erro: "Acesso negado" });
     }
 
-    doc.value++;
+    res.setHeader("Access-Control-Allow-Origin", "https://seuusuario.github.io");
+
+    const novoValor = doc.value + 1;
 
     await collection.updateOne(
       { name: "visitas" },
-      { $set: { value: doc.value } }
+      { $set: { value: novoValor } }
     );
 
-    res.status(200).json({ visitas: doc.value });
-
-  } catch (error) {
-    res.status(500).json({ erro: error.message });
+    return res.status(200).json({ visitas: novoValor });
   }
+
+  return res.status(405).json({ erro: "Método não permitido" });
 }
