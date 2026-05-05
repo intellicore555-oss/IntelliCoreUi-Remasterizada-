@@ -293,8 +293,37 @@ O app não garante segurança imediata.
   </a>
 </div>
 
+<div id="contador" style="
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background: #111;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-family: sans-serif;
+">
+Carregando...
+</div>
+
+<script>
+fetch("https://intelli-core-ui-remasterizada.vercel.app/api/visitas")
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("contador").innerText =
+      "👀 Visitas: " + data.visitas;
+  })
+  .catch(() => {
+    document.getElementById("contador").innerText =
+      "Erro ao carregar";
+  });
+</script>
+
+
     </div>
 </div>
+
+<br><br><br><br>
 
 
 <!-- BARRA INFERIOR ONE UI -->
