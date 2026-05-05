@@ -2,12 +2,20 @@ import { MongoClient } from "mongodb";
 
 const uri = "mongodb+srv://intellicore555_db_user:299792458anjinho%40@cluster0.gnh9bcl.mongodb.net/meusite?retryWrites=true&w=majority";
 
-const client = new MongoClient(uri);
+let client;
+let clientPromise;
+
+if (!global._mongoClientPromise) {
+  client = new MongoClient(uri);
+  global._mongoClientPromise = client.connect();
+}
+
+clientPromise = global._mongoClientPromise;
 
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
-  await client.connect();
+  const client = await clientPromise;
 
   const db = client.db("meusite");
   const collection = db.collection("contador");
