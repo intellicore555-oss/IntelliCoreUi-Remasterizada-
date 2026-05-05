@@ -14,8 +14,17 @@ clientPromise = global._mongoClientPromise;
 
 export default async function handler(req, res) {
   try {
-    const client = await clientPromise;
+    // ✅ CORS headers (sempre)
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, x-source");
 
+    // 🔥 responde preflight
+    if (req.method === "OPTIONS") {
+      return res.status(200).end();
+    }
+
+    const client = await clientPromise;
     const db = client.db("meusite");
     const collection = db.collection("contador");
 
@@ -25,21 +34,16 @@ export default async function handler(req, res) {
       await collection.insertOne({ name: "visitas", value: 0 });
     }
 
-    // 👀 GET → mostrar visitas
+    // 👀 GET
     if (req.method === "GET") {
       const atualizado = await collection.findOne({ name: "visitas" });
-
-      res.setHeader("Access-Control-Allow-Origin", "*");
       return res.status(200).json({ visitas: atualizado.value });
     }
 
-    // ➕ POST → só conta se vier com header correto
+    // ➕ POST
     if (req.method === "POST") {
       const source = req.headers["x-source"] || "";
 
-      res.setHeader("Access-Control-Allow-Origin", "*");
-
-      // 🔒 só incrementa se for GitHub (header controlado por você)
       if (source === "github") {
         await collection.updateOne(
           { name: "visitas" },
