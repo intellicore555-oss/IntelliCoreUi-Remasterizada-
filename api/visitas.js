@@ -15,24 +15,30 @@ clientPromise = global._mongoClientPromise;
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
-  const client = await clientPromise;
+  try {
+    const client = await clientPromise;
 
-  const db = client.db("meusite");
-  const collection = db.collection("contador");
+    const db = client.db("meusite");
+    const collection = db.collection("contador");
 
-  let doc = await collection.findOne({ name: "visitas" });
+    let doc = await collection.findOne({ name: "visitas" });
 
-  if (!doc) {
-    doc = { name: "visitas", value: 0 };
-    await collection.insertOne(doc);
+    if (!doc) {
+      doc = { name: "visitas", value: 0 };
+      await collection.insertOne(doc);
+    }
+
+    doc.value++;
+
+    await collection.updateOne(
+      { name: "visitas" },
+      { $set: { value: doc.value } }
+    );
+
+    res.status(200).json({ visitas: doc.value });
+
+  } catch (error) {
+    console.error("ERRO:", error);
+    res.status(500).json({ erro: "Erro no servidor" });
   }
-
-  doc.value++;
-
-  await collection.updateOne(
-    { name: "visitas" },
-    { $set: { value: doc.value } }
-  );
-
-  res.status(200).json({ visitas: doc.value });
 }
