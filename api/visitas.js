@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const uri = "mongodb+srv://intellicore555_db_user:299792458anjinho%40@cluster0.gnh9bcl.mongodb.net/meusite?retryWrites=true&w=majority";
+const uri = "mongodb+srv://intellicore555_db_user:299792@cluster0.gnh9bcl.mongodb.net/meusite?retryWrites=true&w=majority";
 
 let client;
 let clientPromise;
