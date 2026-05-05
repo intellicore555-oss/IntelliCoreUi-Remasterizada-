@@ -33,19 +33,14 @@ export default async function handler(req, res) {
       return res.status(200).json({ visitas: atualizado.value });
     }
 
-    // ➕ POST → incrementar só se for GitHub
+    // ➕ POST → só conta se vier com header correto
     if (req.method === "POST") {
-      const origin = req.headers.origin || "";
-      const referer = req.headers.referer || "";
-
-      const vindoDoGithub =
-        origin.includes("github.io") ||
-        referer.includes("github.io");
+      const source = req.headers["x-source"] || "";
 
       res.setHeader("Access-Control-Allow-Origin", "*");
 
-      // 🔥 só incrementa se for GitHub
-      if (vindoDoGithub) {
+      // 🔒 só incrementa se for GitHub (header controlado por você)
+      if (source === "github") {
         await collection.updateOne(
           { name: "visitas" },
           { $inc: { value: 1 } }
