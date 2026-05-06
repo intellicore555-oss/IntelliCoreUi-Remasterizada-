@@ -16,8 +16,22 @@ export default async function handler(req, res) {
   }
 
   if (req.method === "GET") {
-    return res.status(200).json({ ok: true, rota: "funcionando" });
+  try {
+    await client.connect();
+    const db = client.db("avaliacoes");
+
+    const respostas = await db
+      .collection("respostas")
+      .find({})
+      .sort({ _id: -1 }) // mais recente primeiro
+      .toArray();
+
+    return res.status(200).json(respostas);
+
+  } catch (err) {
+    return res.status(500).json({ erro: "Erro ao buscar" });
   }
+}
 
   if (req.method !== "POST") {
     return res.status(405).json({ erro: "Método não permitido" });
