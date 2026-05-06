@@ -1,24 +1,36 @@
 import { MongoClient } from "mongodb";
 
 const uri = process.env.MONGO_URI;
-const client = new MongoClient(uri);
+
+let client = new MongoClient(uri);
 
 export default async function handler(req, res) {
+
+  if (req.method === "GET") {
+    return res.status(200).json({ ok: true, rota: "funcionando" });
+  }
+
   if (req.method !== "POST") {
-    return res.status(405).end();
+    return res.status(405).json({ erro: "Método não permitido" });
   }
 
   try {
     await client.connect();
     const db = client.db("avaliacoes");
 
-    await db.collection("respostas").insertOne({
+    const result = await db.collection("respostas").insertOne({
       respostas: req.body,
       data: new Date()
     });
 
-    res.status(200).json({ ok: true });
+    return res.status(200).json({ ok: true, id: result.insertedId });
+
   } catch (err) {
-    res.status(500).json({ erro: "Erro ao salvar" });
+    console.error("ERRO:", err);
+
+    return res.status(500).json({
+      erro: "Falha ao salvar",
+      detalhe: err.message
+    });
   }
 }
