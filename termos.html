@@ -115,9 +115,9 @@ li {
 <div class="card">
     <h2>1. Finalidade do Aplicativo</h2>
 
-    <p>Este aplicativo foi desenvolvido com o objetivo de oferecer suporte e auxílio para mulheres em situações de risco, vulnerabilidade ou violência.</p>
+    <p>Este aplicativo foi desenvolvido com o objetivo de oferecer suporte, acolhimento e auxílio para mulheres em situações de risco, vulnerabilidade, ameaça ou violência.</p>
 
-    <p>O aplicativo atua como ferramenta complementar de apoio e segurança pessoal, permitindo acesso rápido a funcionalidades emergenciais, contatos e recursos de proteção.</p>
+    <p>O aplicativo atua como ferramenta complementar de apoio e segurança pessoal, permitindo acesso rápido a funcionalidades emergenciais, contatos de confiança, compartilhamento de localização e recursos de proteção.</p>
 
     <p>O uso do aplicativo é gratuito e voluntário.</p>
 
@@ -142,9 +142,11 @@ li {
     <ul>
         <li>Telefone: utilizada para iniciar chamadas através do aplicativo padrão do dispositivo.</li>
 
-        <li>Contatos: utilizada exclusivamente para permitir que a própria usuária selecione contatos de confiança.</li>
+        <li>Contatos: utilizada exclusivamente para permitir que a própria usuária selecione contatos manualmente para funcionalidades de emergência e segurança.</li>
 
         <li>Localização: utilizada apenas quando a usuária aciona funcionalidades relacionadas a emergência, SOS ou compartilhamento de localização.</li>
+
+        <li>SMS: utilizada apenas para permitir que a própria usuária envie mensagens de emergência utilizando o aplicativo padrão de SMS do Android.</li>
     </ul>
 
     <p>Todas as permissões dependem de consentimento explícito da usuária.</p>
@@ -160,13 +162,19 @@ li {
     <p>O acesso aos contatos ocorre apenas quando a própria usuária escolhe utilizar funcionalidades relacionadas a contatos de emergência.</p>
 
     <ul>
+        <li>A usuária pode selecionar contatos manualmente através da agenda do Android.</li>
+
+        <li>O aplicativo pode acessar nome e telefone do contato selecionado pela própria usuária.</li>
+
+        <li>Os contatos selecionados podem ser armazenados localmente no dispositivo para funcionalidades de emergência.</li>
+
         <li>Os contatos não são enviados para servidores externos.</li>
 
-        <li>O aplicativo não realiza sincronização automática da agenda.</li>
+        <li>O aplicativo não realiza sincronização automática da agenda completa.</li>
 
         <li>Os contatos não são vendidos, compartilhados ou utilizados para marketing.</li>
 
-        <li>O acesso ocorre somente para funcionamento das funcionalidades escolhidas pela usuária.</li>
+        <li>O acesso ocorre somente após interação direta da usuária.</li>
     </ul>
 
     <p>É responsabilidade da usuária possuir autorização adequada para utilizar números e contatos adicionados ao aplicativo.</p>
@@ -192,10 +200,6 @@ li {
     <p>As informações de localização não são armazenadas permanentemente pelo aplicativo e não são mantidas em histórico próprio.</p>
 
     <p>Em funcionalidades de compartilhamento, a localização poderá ser incluída em mensagens enviadas manualmente pela usuária através de aplicativos externos, como SMS ou aplicativos de comunicação.</p>
-
-    <p style="color:#ff4d6d; font-size:14px; margin-top:10px;">
-        A precisão da localização pode variar conforme sinal GPS, rede, permissões do sistema e condições ambientais.
-    </p>
 </div>
 
 <div class="card">
@@ -209,6 +213,10 @@ li {
         <li>Chamadas são realizadas pelo aplicativo padrão de telefone do Android.</li>
 
         <li>Mensagens podem depender do aplicativo padrão de SMS ou de aplicativos externos.</li>
+
+        <li>O aplicativo pode permitir envio manual de mensagens de SOS para contatos previamente selecionados pela usuária.</li>
+
+        <li>As mensagens podem incluir localização aproximada do dispositivo quando a usuária utilizar funcionalidades relacionadas a emergência.</li>
 
         <li>O funcionamento pode variar conforme dispositivo, permissões e versão do Android.</li>
     </ul>
@@ -227,6 +235,8 @@ li {
         <li>Arquivos locais do aplicativo</li>
 
         <li>Armazenamento interno do Android</li>
+
+        <li>SharedPreferences do Android para armazenamento local de configurações e contatos selecionados pela usuária</li>
     </ul>
 
     <p>O aplicativo não realiza coleta massiva de dados pessoais.</p>
@@ -275,27 +285,47 @@ li {
 </div>
 
 <div class="card">
-    <h2>10. Google Play Protect</h2>
+    <h2>10. Conteúdo Protegido</h2>
+
+    <p>O recurso "Conteúdo Protegido" depende das configurações de segurança existentes no próprio dispositivo Android.</p>
+
+    <p>Para funcionamento adequado da autenticação biométrica ou por credencial, o dispositivo deve possuir pelo menos um método de segurança configurado pela própria usuária.</p>
+
+    <ul>
+        <li>PIN</li>
+
+        <li>Senha</li>
+
+        <li>Padrão de desbloqueio</li>
+
+        <li>Biometria cadastrada no Android</li>
+    </ul>
+
+    <p>Caso o dispositivo não possua mecanismos de autenticação configurados, determinadas telas protegidas poderão ser abertas sem solicitação de autenticação.</p>
+</div>
+
+<div class="card">
+    <h2>11. Google Play Protect</h2>
 
     <p>O aplicativo pode solicitar ou recomendar a verificação do Google Play Protect para reforçar a segurança do aplicativo instalado fora da Google Play Store.</p>
 
     <p>O Google Play Protect é um recurso oficial do Android responsável por verificar aplicativos potencialmente nocivos.</p>
 
     <p>O aplicativo não desativa, contorna ou interfere em mecanismos de segurança do Android.</p>
-
-    <p>O funcionamento do Google Play Protect depende exclusivamente do sistema Android e dos serviços Google disponíveis no dispositivo.</p>
 </div>
 
 <div class="card">
-    <h2>11. Compatibilidade Android</h2>
+    <h2>12. Compatibilidade Android</h2>
 
-    <p>O aplicativo foi desenvolvido para versões modernas do Android, incluindo dispositivos compatíveis com Android SDK 34 ou superior.</p>
+    <p>O aplicativo foi desenvolvido para versões modernas do Android.</p>
 
     <p>Determinadas funcionalidades podem variar conforme fabricante, permissões, versão do sistema e restrições impostas pelo Android.</p>
+
+    <p>Alguns recursos podem não funcionar corretamente em dispositivos modificados, com restrições específicas ou sem serviços essenciais do Android.</p>
 </div>
 
 <div class="card">
-    <h2>12. Tecnologias Utilizadas</h2>
+    <h2>13. Tecnologias Utilizadas</h2>
 
     <p>O aplicativo utiliza tecnologias baseadas em WebView, HTML, CSS e JavaScript para funcionamento da interface.</p>
 
@@ -305,7 +335,7 @@ li {
 </div>
 
 <div class="card">
-    <h2>13. Conformidade Legal e LGPD</h2>
+    <h2>14. Conformidade Legal e LGPD</h2>
 
     <p>O tratamento de dados realizado pelo aplicativo busca respeitar a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD).</p>
 
@@ -317,57 +347,45 @@ li {
 </div>
 
 <div class="card">
-    <h2>14. Limitações e Responsabilidade</h2>
+    <h2>15. Limitações e Responsabilidade</h2>
 
     <p>O aplicativo é uma ferramenta complementar de apoio e não substitui serviços oficiais de emergência.</p>
 
     <p>Não existe garantia de proteção imediata, prevenção de crimes, resposta rápida ou funcionamento contínuo.</p>
 
-<p>O recurso "Conteúdo Protegido" funcionará apenas se a usuária tiver PIN, biometria ou senha ativados no celular. Caso contrário, o aplicativo prosseguirá para a próxima página sem solicitar autenticação.</p>
-
-    <p>O funcionamento depende de diversos fatores externos, incluindo:</p>
+    <p>O funcionamento depende de diversos fatores externos.</p>
 
     <ul>
         <li>Permissões concedidas</li>
 
         <li>Funcionamento do dispositivo</li>
 
-        <li>Sinal de internet</li>
+        <li>Internet</li>
 
         <li>Rede móvel</li>
 
-        <li>Serviços do Android</li>
+        <li>GPS</li>
 
-        <li>Disponibilidade de GPS</li>
+        <li>Serviços do Android</li>
 
         <li>Ação da própria usuária</li>
     </ul>
 
-    <p>O desenvolvedor não se responsabiliza por danos indiretos, indisponibilidades, falhas técnicas, atrasos, perda de dados ou limitações decorrentes do uso do aplicativo.</p>
-
-    <p style="color:#ff4d6d; font-size:14px; margin-top:10px;">
-        Este aplicativo não substitui polícia, serviços médicos, órgãos governamentais ou serviços oficiais de emergência.
-        <br><br>
-        Em situações reais de risco, procure imediatamente os serviços oficiais competentes.
-        <br><br>
-        O aplicativo não deve ser utilizado como único meio de segurança pessoal.
-    </p>
+    <p>O desenvolvedor não se responsabiliza por indisponibilidades, atrasos, falhas técnicas ou limitações externas.</p>
 </div>
 
 <div class="card">
-    <h2>15. Instalação Fora da Play Store</h2>
+    <h2>16. Instalação Fora da Play Store</h2>
 
     <p>O aplicativo poderá ser distribuído fora da Google Play Store.</p>
 
     <p>Nesses casos, a instalação dependerá da autorização manual da própria usuária no Android.</p>
 
     <p>A usuária é responsável por instalar o aplicativo apenas através de fontes confiáveis.</p>
-
-    <p>O aplicativo não incentiva desativação de mecanismos de segurança do Android.</p>
 </div>
 
 <div class="card">
-    <h2>16. Alterações nos Termos</h2>
+    <h2>17. Alterações nos Termos</h2>
 
     <p>Os presentes Termos de Uso e Política de Privacidade poderão ser atualizados futuramente para melhorias, adequações legais, técnicas ou de segurança.</p>
 
@@ -375,9 +393,93 @@ li {
 </div>
 
 <div class="card">
-    <h2>17. Aceitação dos Termos</h2>
+    <h2>18. Uso Responsável</h2>
+
+    <p>A usuária concorda em utilizar o aplicativo de forma responsável, ética e compatível com a legislação aplicável.</p>
+
+    <p>O aplicativo não deve ser utilizado para práticas ilegais, perseguição, assédio, fraude ou qualquer atividade indevida.</p>
+</div>
+
+<div class="card">
+    <h2>19. Dependência de Aplicativos Externos</h2>
+
+    <p>Algumas funcionalidades dependem de aplicativos externos instalados no dispositivo, como telefone, SMS, mapas ou aplicativos de comunicação.</p>
+
+    <p>O funcionamento dessas funcionalidades poderá variar conforme disponibilidade e compatibilidade dos aplicativos instalados pela própria usuária.</p>
+</div>
+
+<div class="card">
+    <h2>20. Exclusão de Dados Locais</h2>
+
+    <p>A usuária poderá remover dados armazenados localmente apagando os dados do aplicativo nas configurações do Android ou desinstalando o aplicativo.</p>
+
+    <p>Após a remoção, determinadas informações poderão não ser recuperáveis.</p>
+</div>
+
+<div class="card">
+    <h2>21. Atualizações do Aplicativo</h2>
+
+    <p>O aplicativo poderá receber atualizações destinadas a melhorias de desempenho, segurança, estabilidade ou compatibilidade.</p>
+
+    <p>Algumas funcionalidades poderão ser alteradas, adicionadas ou removidas futuramente.</p>
+</div>
+
+<div class="card">
+    <h2>22. Uso Offline</h2>
+
+    <p>Determinadas funcionalidades podem operar parcialmente sem conexão com internet.</p>
+
+    <p>Recursos dependentes de mapas, localização em tempo real, WhatsApp ou serviços externos poderão exigir conexão ativa.</p>
+</div>
+
+<div class="card">
+    <h2>23. Segurança do Dispositivo</h2>
+
+    <p>A segurança do aplicativo também depende das práticas de segurança adotadas pela própria usuária.</p>
+
+    <ul>
+        <li>Uso de senha no dispositivo</li>
+
+        <li>Atualizações do Android</li>
+
+        <li>Instalação apenas de aplicativos confiáveis</li>
+
+        <li>Proteção física do aparelho</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>24. Direitos da Usuária</h2>
+
+    <p>A usuária possui controle sobre permissões concedidas ao aplicativo.</p>
+
+    <p>As permissões podem ser revisadas, alteradas ou removidas diretamente nas configurações do Android.</p>
+</div>
+
+<div class="card">
+    <h2>25. Aceitação dos Termos</h2>
 
     <p>Ao continuar utilizando o aplicativo, a usuária declara que leu, compreendeu e concorda com todos os termos apresentados nesta página.</p>
+</div>
+
+<div class="card">
+    <h2>26. Transparência</h2>
+
+    <p>O aplicativo busca operar com foco em privacidade, transparência e controle da usuária.</p>
+
+    <p>Nenhuma funcionalidade sensível é executada sem permissões do Android.</p>
+
+    <p>O aplicativo não executa monitoramento oculto, rastreamento contínuo ou ações secretas em segundo plano.</p>
+</div>
+
+<div class="card">
+    <h2>27. Considerações Finais</h2>
+
+    <p>Este aplicativo deve ser utilizado como ferramenta complementar de apoio pessoal.</p>
+
+    <p>Em situações reais de emergência, risco imediato ou violência, procure imediatamente autoridades competentes e serviços oficiais de emergência.</p>
+
+    <p>O aplicativo não substitui polícia, atendimento médico, órgãos governamentais ou serviços especializados de proteção.</p>
 </div>
 
 <button onclick="aceitar()" class="botao">Continuar</button>
