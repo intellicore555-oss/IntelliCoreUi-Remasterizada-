@@ -11,485 +11,930 @@
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap" rel="stylesheet"> 
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-font-family: 'Quicksand', sans-serif;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Quicksand',sans-serif;
 }
 
-body {
-    background: #000;
-    color: #eaeaea;
-    padding: 20px;
+html{
+    scroll-behavior:smooth;
 }
 
-.container {
-    max-width: 900px;
-    margin: auto;
+body{
+    background: black;
+    
+    color:#f5f5f5;
+    
+    padding:20px;
+    
+    min-height:100vh;
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 30px;
+/* CONTAINER */
+
+.container{
+    max-width:950px;
+    margin:auto;
 }
 
-.header h1 {
-    color: #ff4d6d;
-    font-size: 28px;
+/* HEADER */
+
+.header{
+    text-align:center;
+    margin-bottom:35px;
+    padding-top:20px;
 }
 
-.header p {
-    color: #aaa;
-    font-size: 14px;
+.logo{
+    width:85px;
+    height:85px;
+    
+    border-radius:30px;
+    
+    background:
+    linear-gradient(
+    135deg,
+    #ff4d6d,
+    #ff8fab
+    );
+    
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    
+    margin:auto;
+    margin-bottom:20px;
+    
+    font-size:38px;
+    
+    box-shadow:
+    0 10px 40px rgba(255,77,109,.35);
 }
 
-.card {
-    background: #FFF0F5;
-    border: 2px solid #FFA6C9;
-    border-radius: 16px;
-    padding: 18px;
-    margin-bottom: 15px;
-    backdrop-filter: blur(10px);
+.header h1{
+    font-size:32px;
+    font-weight:700;
+    
+    margin-bottom:10px;
+    
+    background:linear-gradient(
+    90deg,
+    #fff,
+    #ffb3c6
+    );
+    
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
-.card h2 {
-    color: #ff4d6d;
-    font-size: 16px;
-    margin-bottom: 8px;
+.header p{
+    color:#b8b8b8;
+    
+    font-size:15px;
+    
+    line-height:1.6;
 }
 
-.card p {
-    font-size: 14px;
-    color: #000;
-    margin-bottom: 8px;
+/* CARDS */
+
+.card{
+    position:relative;
+    
+    background:
+    rgba(255,255,255,.06);
+    
+    border:
+    1px solid rgba(255,255,255,.08);
+    
+    border-radius:28px;
+    
+    padding:28px;
+    
+    margin-bottom:22px;
+    
+    backdrop-filter:blur(18px);
+    
+    box-shadow:
+    0 15px 45px rgba(0,0,0,.35);
+    
+    overflow:hidden;
+    
+    transition:.25s;
 }
 
-ul {
-    margin-top: 8px;
-    padding-left: 18px;
-color: #000;
+.card:hover{
+    transform:translateY(-3px);
+    
+    border-color:
+    rgba(255,143,171,.4);
 }
 
-li {
-    margin-bottom: 6px;
-    font-size: 14px;
-    color: #000;
+/* brilho */
+
+.card::before{
+    content:"";
+    
+    position:absolute;
+    
+    top:-80px;
+    right:-80px;
+    
+    width:180px;
+    height:180px;
+    
+    background:
+    radial-gradient(
+    circle,
+    rgba(255,77,109,.18),
+    transparent 70%
+    );
 }
 
-.botao {
-    margin-top: 25px;
-    width: 100%;
-    padding: 16px;
-    border: none;
-    border-radius: 140px;
-    font-size: 16px;
-    font-weight: 600;
-    background: linear-gradient(135deg, #ff4d6d, #ff1e4d);
-    color: white;
-    cursor: pointer;
+/* TITULO */
+
+.card h2{
+    color:#ff8fab;
+    
+    font-size:21px;
+    
+    margin-bottom:18px;
+    
+    display:flex;
+    align-items:center;
+    
+    gap:10px;
 }
 
-.botao:active {
-    transform: scale(0.97);
+/* CLAUSULAS */
+
+.clausula{
+    margin-bottom:16px;
+    
+    padding:16px;
+    
+    border-radius:18px;
+    
+    background:
+    rgba(255,255,255,.04);
+    
+    border-left:
+    4px solid #ff4d6d;
 }
 
-.footer {
-    margin-top: 20px;
-    font-size: 12px;
-    color: #777;
-    text-align: center;
+.clausula h3{
+    color:#fff;
+    
+    font-size:16px;
+    
+    margin-bottom:10px;
 }
+
+.clausula p{
+    color:#d6d6d6;
+    
+    line-height:1.8;
+    
+    font-size:15px;
+}
+
+/* LISTAS */
+
+ul{
+    margin-top:12px;
+    padding-left:20px;
+}
+
+li{
+    margin-bottom:10px;
+    
+    color:#e5e5e5;
+    
+    line-height:1.7;
+}
+
+/* BOTAO */
+
+.botao{
+    width:100%;
+    
+    padding:18px;
+    
+    border:none;
+    
+    border-radius:100px;
+    
+    font-size:17px;
+    font-weight:700;
+    
+    cursor:pointer;
+    
+    color:white;
+    
+    background:
+    linear-gradient(
+    135deg,
+    #ff4d6d,
+    #ff0066
+    );
+    
+    box-shadow:
+    0 12px 35px rgba(255,77,109,.35);
+    
+    transition:.2s;
+    
+    margin-top:15px;
+}
+
+.botao:hover{
+    transform:translateY(-2px);
+}
+
+.botao:active{
+    transform:scale(.97);
+}
+
+/* FOOTER */
+
+.footer{
+    margin-top:40px;
+    
+    text-align:center;
+    
+    color:#8f8f8f;
+    
+    font-size:13px;
+    
+    line-height:1.8;
+    
+    padding-bottom:30px;
+}
+
+/* TAG */
+
+.tag{
+    display:inline-block;
+    
+    padding:8px 14px;
+    
+    border-radius:100px;
+    
+    background:
+    rgba(255,77,109,.14);
+    
+    border:
+    1px solid rgba(255,77,109,.35);
+    
+    color:#ffb3c6;
+    
+    font-size:13px;
+    
+    margin-bottom:18px;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#ff4d6d;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-track{
+    background:#111;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    body{
+        padding:14px;
+    }
+
+    .card{
+        padding:22px;
+    }
+
+    .header h1{
+        font-size:26px;
+    }
+
+    .card h2{
+        font-size:19px;
+    }
+
+    .clausula p,
+    li{
+        font-size:14px;
+    }
+
+    .logo{
+        width:72px;
+        height:72px;
+        font-size:32px;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-<div class="header">
-    <h1>Termos de Uso e Política de Privacidade</h1>
-    <p>Segurança, transparência, privacidade e controle da usuária</p>
-</div>
-
 <div class="card">
     <h2>1. Finalidade do Aplicativo</h2>
 
-    <p>Este aplicativo foi desenvolvido com o objetivo de oferecer suporte, acolhimento e auxílio para mulheres em situações de risco, vulnerabilidade, ameaça ou violência.</p>
+    <p><strong>Cláusula 1.1:</strong> Este aplicativo foi desenvolvido com objetivo de oferecer suporte, acolhimento e auxílio para mulheres em situações de risco, vulnerabilidade, ameaça ou violência.</p>
 
-    <p>O aplicativo atua como ferramenta complementar de apoio e segurança pessoal, permitindo acesso rápido a funcionalidades emergenciais, contatos de confiança, compartilhamento de localização e recursos de proteção.</p>
+    <p><strong>Cláusula 1.2:</strong> O aplicativo atua como ferramenta complementar de apoio pessoal e segurança digital.</p>
 
-    <p>O uso do aplicativo é gratuito e voluntário.</p>
+    <p><strong>Cláusula 1.3:</strong> O aplicativo disponibiliza funcionalidades emergenciais, contatos rápidos, proteção de acesso, recursos de localização e ferramentas de segurança.</p>
 
-    <p>Ao utilizar o aplicativo, a usuária declara que leu, compreendeu e concorda com os presentes Termos de Uso e Política de Privacidade.</p>
+    <p><strong>Cláusula 1.4:</strong> O uso do aplicativo é gratuito e voluntário.</p>
+
+    <p><strong>Cláusula 1.5:</strong> Ao utilizar o aplicativo, a usuária declara estar ciente e concordar com os presentes Termos de Uso e Política de Privacidade.</p>
 </div>
 
 <div class="card">
     <h2>2. Público-Alvo</h2>
 
-    <p>O aplicativo foi direcionado principalmente para mulheres em situação de violência, risco ou vulnerabilidade.</p>
+    <p><strong>Cláusula 2.1:</strong> O aplicativo foi direcionado principalmente para mulheres em situação de violência, risco ou vulnerabilidade.</p>
 
-    <p>Apesar disso, qualquer pessoa que utilize o aplicativo deverá respeitar integralmente estes termos.</p>
+    <p><strong>Cláusula 2.2:</strong> Qualquer pessoa que utilize o aplicativo deverá respeitar integralmente estes termos.</p>
 
-    <p>O aplicativo não realiza discriminação de gênero, raça, religião, nacionalidade ou qualquer outra condição pessoal.</p>
+    <p><strong>Cláusula 2.3:</strong> O aplicativo não realiza discriminação de gênero, raça, religião, nacionalidade ou qualquer outra condição pessoal.</p>
 </div>
 
 <div class="card">
     <h2>3. Permissões Utilizadas</h2>
 
-    <p>O aplicativo solicita apenas permissões necessárias para funcionamento de funcionalidades específicas.</p>
+    <p><strong>Cláusula 3.1:</strong> O aplicativo solicita apenas permissões necessárias para funcionalidades específicas.</p>
 
-    <ul>
-        <li>Telefone: utilizada para iniciar chamadas através do aplicativo padrão do dispositivo.</li>
+    <p><strong>Cláusula 3.2:</strong> A permissão de telefone poderá ser utilizada para iniciar chamadas através do aplicativo padrão do Android.</p>
 
-        <li>Contatos: utilizada exclusivamente para permitir que a própria usuária selecione contatos manualmente para funcionalidades de emergência e segurança.</li>
+    <p><strong>Cláusula 3.3:</strong> A permissão de contatos poderá ser utilizada para seleção manual de contatos de emergência.</p>
 
-        <li>Localização: utilizada apenas quando a usuária aciona funcionalidades relacionadas a emergência, SOS ou compartilhamento de localização.</li>
+    <p><strong>Cláusula 3.4:</strong> A permissão de localização poderá ser utilizada em funcionalidades relacionadas a emergência e compartilhamento de localização.</p>
 
-        <li>SMS: utilizada apenas para permitir que a própria usuária envie mensagens de emergência utilizando o aplicativo padrão de SMS do Android.</li>
-    </ul>
+    <p><strong>Cláusula 3.5:</strong> A permissão de SMS poderá ser utilizada para envio manual de mensagens emergenciais através do aplicativo padrão do Android.</p>
 
-    <p>Todas as permissões dependem de consentimento explícito da usuária.</p>
+    <p><strong>Cláusula 3.6:</strong> Todas as permissões dependem de consentimento da usuária.</p>
 
-    <p>As permissões podem ser concedidas, negadas ou revogadas a qualquer momento nas configurações do Android.</p>
+    <p><strong>Cláusula 3.7:</strong> As permissões podem ser revogadas a qualquer momento nas configurações do Android.</p>
 
-    <p>O aplicativo não tenta ocultar, forçar, contornar ou burlar o sistema de permissões do Android.</p>
+    <p><strong>Cláusula 3.8:</strong> O aplicativo não contorna, burla ou oculta permissões do sistema Android.</p>
 </div>
 
 <div class="card">
     <h2>4. Uso de Contatos</h2>
 
-    <p>O acesso aos contatos ocorre apenas quando a própria usuária escolhe utilizar funcionalidades relacionadas a contatos de emergência.</p>
+    <p><strong>Cláusula 4.1:</strong> O acesso aos contatos ocorre apenas mediante ação manual da própria usuária.</p>
 
-    <ul>
-        <li>A usuária pode selecionar contatos manualmente através da agenda do Android.</li>
+    <p><strong>Cláusula 4.2:</strong> O aplicativo poderá acessar nome e telefone de contatos selecionados pela usuária.</p>
 
-        <li>O aplicativo pode acessar nome e telefone do contato selecionado pela própria usuária.</li>
+    <p><strong>Cláusula 4.3:</strong> Os contatos poderão ser armazenados localmente no dispositivo.</p>
 
-        <li>Os contatos selecionados podem ser armazenados localmente no dispositivo para funcionalidades de emergência.</li>
+    <p><strong>Cláusula 4.4:</strong> O aplicativo não sincroniza automaticamente toda a agenda do aparelho.</p>
 
-        <li>Os contatos não são enviados para servidores externos.</li>
-
-        <li>O aplicativo não realiza sincronização automática da agenda completa.</li>
-
-        <li>Os contatos não são vendidos, compartilhados ou utilizados para marketing.</li>
-
-        <li>O acesso ocorre somente após interação direta da usuária.</li>
-    </ul>
-
-    <p>É responsabilidade da usuária possuir autorização adequada para utilizar números e contatos adicionados ao aplicativo.</p>
+    <p><strong>Cláusula 4.5:</strong> Os contatos não são vendidos nem utilizados para marketing.</p>
 </div>
 
 <div class="card">
     <h2>5. Uso de Localização</h2>
 
-    <p>A localização do dispositivo é utilizada apenas mediante ação manual da usuária.</p>
+    <p><strong>Cláusula 5.1:</strong> A localização é utilizada apenas mediante ação da usuária.</p>
 
-    <ul>
-        <li>Não existe rastreamento contínuo.</li>
+    <p><strong>Cláusula 5.2:</strong> O aplicativo não realiza rastreamento contínuo em segundo plano.</p>
 
-        <li>Não existe monitoramento em tempo real.</li>
+    <p><strong>Cláusula 5.3:</strong> O aplicativo poderá utilizar a última localização disponível do dispositivo.</p>
 
-        <li>Não existe coleta de localização em segundo plano.</li>
-
-        <li>A localização é utilizada apenas durante funcionalidades específicas de emergência ou compartilhamento.</li>
-    </ul>
-
-    <p>O aplicativo utiliza preferencialmente a última localização disponível no dispositivo no momento da ação.</p>
-
-    <p>As informações de localização não são armazenadas permanentemente pelo aplicativo e não são mantidas em histórico próprio.</p>
-
-    <p>Em funcionalidades de compartilhamento, a localização poderá ser incluída em mensagens enviadas manualmente pela usuária através de aplicativos externos, como SMS ou aplicativos de comunicação.</p>
+    <p><strong>Cláusula 5.4:</strong> Informações de localização poderão ser compartilhadas manualmente pela usuária em funcionalidades emergenciais.</p>
 </div>
 
 <div class="card">
-    <h2>6. Botão de Emergência (SOS)</h2>
+    <h2>6. Botão de Emergência</h2>
 
-    <p>O aplicativo disponibiliza funcionalidades emergenciais destinadas a agilizar ações em situações de risco.</p>
+    <p><strong>Cláusula 6.1:</strong> O aplicativo poderá disponibilizar funcionalidades emergenciais para agilizar pedidos de ajuda.</p>
 
-    <ul>
-        <li>As ações dependem de interação direta da usuária.</li>
+    <p><strong>Cláusula 6.2:</strong> Chamadas são realizadas através do aplicativo padrão de telefone do Android.</p>
 
-        <li>Chamadas são realizadas pelo aplicativo padrão de telefone do Android.</li>
+    <p><strong>Cláusula 6.3:</strong> O funcionamento poderá variar conforme fabricante, permissões e versão do Android.</p>
 
-        <li>Mensagens podem depender do aplicativo padrão de SMS ou de aplicativos externos.</li>
-
-        <li>O aplicativo pode permitir envio manual de mensagens de SOS para contatos previamente selecionados pela usuária.</li>
-
-        <li>As mensagens podem incluir localização aproximada do dispositivo quando a usuária utilizar funcionalidades relacionadas a emergência.</li>
-
-        <li>O funcionamento pode variar conforme dispositivo, permissões e versão do Android.</li>
-    </ul>
-
-    <p>O aplicativo não garante resposta imediata, atendimento oficial ou intervenção de autoridades.</p>
+    <p><strong>Cláusula 6.4:</strong> O aplicativo não garante resposta imediata ou atendimento oficial.</p>
 </div>
 
 <div class="card">
-    <h2>7. Armazenamento de Dados</h2>
+    <h2>7. Proteção por Movimento</h2>
 
-    <p>As informações utilizadas pelo aplicativo são armazenadas prioritariamente no próprio dispositivo da usuária.</p>
+    <p><strong>Cláusula 7.1:</strong> O recurso de proteção por movimento utiliza o sensor de acelerômetro do dispositivo Android.</p>
 
-    <ul>
-        <li>LocalStorage</li>
+    <p><strong>Cláusula 7.2:</strong> O acelerômetro é um sensor interno do aparelho utilizado para detectar movimentações físicas.</p>
 
-        <li>Arquivos locais do aplicativo</li>
+    <p><strong>Cláusula 7.3:</strong> O aplicativo poderá acessar dados do acelerômetro enquanto a proteção por movimento estiver ativada.</p>
 
-        <li>Armazenamento interno do Android</li>
+    <p><strong>Cláusula 7.4:</strong> O acesso ao acelerômetro ocorre exclusivamente para funcionamento da detecção de movimentos emergenciais.</p>
 
-        <li>SharedPreferences do Android para armazenamento local de configurações e contatos selecionados pela usuária</li>
-    </ul>
+    <p><strong>Cláusula 7.5:</strong> O acelerômetro é um componente interno do Android e não exige permissão separada específica no sistema.</p>
 
-    <p>O aplicativo não realiza coleta massiva de dados pessoais.</p>
+    <p><strong>Cláusula 7.6:</strong> O funcionamento poderá variar conforme fabricante, sensores disponíveis e versão do Android.</p>
 
-    <p>O aplicativo não possui finalidade comercial de exploração de dados.</p>
+    <p><strong>Cláusula 7.7:</strong> Alguns dispositivos poderão limitar sensores devido a economia de bateria ou restrições do sistema.</p>
 
-    <p>Não existe venda de informações pessoais.</p>
+    <p><strong>Cláusula 7.8:</strong> Dispositivos sem acelerômetro poderão não executar corretamente a funcionalidade.</p>
+
+    <p><strong>Cláusula 7.9:</strong> Vibrações, impactos ou movimentos involuntários poderão ativar o recurso automaticamente.</p>
+
+    <p><strong>Cláusula 7.10:</strong> O recurso poderá iniciar automaticamente uma ligação telefônica quando movimentos compatíveis forem detectados.</p>
+
+    <p><strong>Cláusula 7.11:</strong> A ligação automática depende da permissão de chamadas telefônicas concedida pela usuária.</p>
+
+    <p><strong>Cláusula 7.12:</strong> Sem permissão de chamadas, a funcionalidade poderá não operar corretamente.</p>
+
+    <p><strong>Cláusula 7.13:</strong> O funcionamento depende da operadora, rede móvel e disponibilidade do dispositivo.</p>
+
+    <p><strong>Cláusula 7.14:</strong> O recurso pode ser ativado ou desativado manualmente pela usuária.</p>
 </div>
 
 <div class="card">
-    <h2>8. Ausência de Rastreamento e Publicidade</h2>
+    <h2>8. Segurança de Acesso</h2>
 
-    <ul>
-        <li>O aplicativo não exibe anúncios.</li>
+    <p><strong>Cláusula 8.1:</strong> O aplicativo poderá utilizar mecanismos de segurança do próprio Android.</p>
 
-        <li>O aplicativo não utiliza rastreamento comportamental intencional.</li>
+    <p><strong>Cláusula 8.2:</strong> O aplicativo poderá utilizar PIN, senha, padrão ou biometria do sistema.</p>
 
-        <li>O aplicativo não utiliza mecanismos ocultos de monitoramento.</li>
+    <p><strong>Cláusula 8.3:</strong> Dados biométricos permanecem sob gerenciamento exclusivo do Android.</p>
 
-        <li>O aplicativo não utiliza spyware.</li>
-    </ul>
-
-    <p>Componentes do sistema Android, WebView, serviços do Google ou fabricantes do dispositivo podem possuir políticas próprias independentes do aplicativo.</p>
+    <p><strong>Cláusula 8.4:</strong> O aplicativo não armazena impressões digitais, rosto ou informações biométricas.</p>
 </div>
 
 <div class="card">
-    <h2>9. Segurança e Proteção de Acesso</h2>
+    <h2>9. Conteúdo Protegido</h2>
 
-    <p>O aplicativo pode utilizar mecanismos de segurança disponibilizados pelo próprio Android.</p>
+    <p><strong>Cláusula 9.1:</strong> O recurso de conteúdo protegido depende das configurações de segurança do aparelho.</p>
 
-    <ul>
-        <li>PIN</li>
+    <p><strong>Cláusula 9.2:</strong> O dispositivo deverá possuir autenticação configurada para funcionamento adequado.</p>
 
-        <li>Senha</li>
-
-        <li>Padrão de desbloqueio</li>
-
-        <li>Biometria via BiometricPrompt</li>
-    </ul>
-
-    <p>O uso de biometria ocorre localmente no dispositivo.</p>
-
-    <p>O aplicativo não armazena impressões digitais, rosto ou dados biométricos.</p>
-
-    <p>Os dados biométricos permanecem sob gerenciamento exclusivo do sistema Android.</p>
+    <p><strong>Cláusula 9.3:</strong> Sem autenticação configurada, determinadas telas poderão abrir sem solicitação de biometria ou senha.</p>
 </div>
 
 <div class="card">
-    <h2>10. Conteúdo Protegido</h2>
+    <h2>10. Armazenamento Local</h2>
 
-    <p>O recurso "Conteúdo Protegido" depende das configurações de segurança existentes no próprio dispositivo Android.</p>
+    <p><strong>Cláusula 10.1:</strong> Dados utilizados pelo aplicativo poderão ser armazenados localmente no dispositivo.</p>
 
-    <p>Para funcionamento adequado da autenticação biométrica ou por credencial, o dispositivo deve possuir pelo menos um método de segurança configurado pela própria usuária.</p>
+    <p><strong>Cláusula 10.2:</strong> O aplicativo poderá utilizar LocalStorage, SharedPreferences e armazenamento interno do Android.</p>
 
-    <ul>
-        <li>PIN</li>
-
-        <li>Senha</li>
-
-        <li>Padrão de desbloqueio</li>
-
-        <li>Biometria cadastrada no Android</li>
-    </ul>
-
-    <p>Caso o dispositivo não possua mecanismos de autenticação configurados, determinadas telas protegidas poderão ser abertas sem solicitação de autenticação.</p>
+    <p><strong>Cláusula 10.3:</strong> O aplicativo não realiza venda de dados pessoais.</p>
 </div>
 
 <div class="card">
-    <h2>11. Google Play Protect</h2>
+    <h2>11. Ausência de Monitoramento Oculto</h2>
 
-    <p>O aplicativo pode solicitar ou recomendar a verificação do Google Play Protect para reforçar a segurança do aplicativo instalado fora da Google Play Store.</p>
+    <p><strong>Cláusula 11.1:</strong> O aplicativo não utiliza spyware.</p>
 
-    <p>O Google Play Protect é um recurso oficial do Android responsável por verificar aplicativos potencialmente nocivos.</p>
+    <p><strong>Cláusula 11.2:</strong> O aplicativo não realiza monitoramento oculto contínuo.</p>
 
-    <p>O aplicativo não desativa, contorna ou interfere em mecanismos de segurança do Android.</p>
+    <p><strong>Cláusula 11.3:</strong> Nenhuma funcionalidade sensível opera sem permissões do Android.</p>
 </div>
 
 <div class="card">
-    <h2>12. Compatibilidade Android</h2>
+    <h2>12. Compatibilidade</h2>
 
-    <p>O aplicativo foi desenvolvido para versões modernas do Android.</p>
+    <p><strong>Cláusula 12.1:</strong> Determinadas funcionalidades poderão variar conforme fabricante e versão do Android.</p>
 
-    <p>Determinadas funcionalidades podem variar conforme fabricante, permissões, versão do sistema e restrições impostas pelo Android.</p>
-
-    <p>Alguns recursos podem não funcionar corretamente em dispositivos modificados, com restrições específicas ou sem serviços essenciais do Android.</p>
+    <p><strong>Cláusula 12.2:</strong> Recursos poderão não funcionar corretamente em dispositivos modificados.</p>
 </div>
 
 <div class="card">
-    <h2>13. Tecnologias Utilizadas</h2>
+    <h2>13. LGPD e Privacidade</h2>
 
-    <p>O aplicativo utiliza tecnologias baseadas em WebView, HTML, CSS e JavaScript para funcionamento da interface.</p>
+    <p><strong>Cláusula 13.1:</strong> O aplicativo busca respeitar a Lei Geral de Proteção de Dados.</p>
 
-    <p>Scripts executados pelo aplicativo possuem finalidade exclusivamente funcional.</p>
+    <p><strong>Cláusula 13.2:</strong> As permissões possuem finalidade limitada às funcionalidades do aplicativo.</p>
 
-    <p>O aplicativo não executa código destinado a espionagem, mineração de dados ou controle oculto do dispositivo.</p>
+    <p><strong>Cláusula 13.3:</strong> A usuária poderá revogar permissões diretamente no Android.</p>
 </div>
 
 <div class="card">
-    <h2>14. Conformidade Legal e LGPD</h2>
+    <h2>14. Limitações</h2>
 
-    <p>O tratamento de dados realizado pelo aplicativo busca respeitar a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD).</p>
+    <p><strong>Cláusula 14.1:</strong> O aplicativo não substitui serviços oficiais de emergência.</p>
 
-    <p>As permissões solicitadas possuem finalidade específica, limitada e relacionada às funcionalidades do aplicativo.</p>
+    <p><strong>Cláusula 14.2:</strong> Não existe garantia de funcionamento contínuo.</p>
 
-    <p>A usuária poderá revogar permissões a qualquer momento diretamente nas configurações do Android.</p>
-
-    <p>O aplicativo busca aplicar princípios de necessidade, minimização de dados e transparência.</p>
+    <p><strong>Cláusula 14.3:</strong> O funcionamento depende de internet, sensores, permissões e serviços do Android.</p>
 </div>
 
 <div class="card">
-    <h2>15. Limitações e Responsabilidade</h2>
+    <h2>15. Responsabilidade da Usuária</h2>
 
-    <p>O aplicativo é uma ferramenta complementar de apoio e não substitui serviços oficiais de emergência.</p>
+    <p><strong>Cláusula 15.1:</strong> A usuária é responsável pelo uso adequado do aplicativo.</p>
 
-    <p>Não existe garantia de proteção imediata, prevenção de crimes, resposta rápida ou funcionamento contínuo.</p>
+    <p><strong>Cláusula 15.2:</strong> A usuária é responsável pelas permissões concedidas ao aplicativo.</p>
 
-    <p>O funcionamento depende de diversos fatores externos.</p>
-
-    <ul>
-        <li>Permissões concedidas</li>
-
-        <li>Funcionamento do dispositivo</li>
-
-        <li>Internet</li>
-
-        <li>Rede móvel</li>
-
-        <li>GPS</li>
-
-        <li>Serviços do Android</li>
-
-        <li>Ação da própria usuária</li>
-    </ul>
-
-    <p>O desenvolvedor não se responsabiliza por indisponibilidades, atrasos, falhas técnicas ou limitações externas.</p>
+    <p><strong>Cláusula 15.3:</strong> A usuária é responsável por manter a segurança física do dispositivo.</p>
 </div>
 
 <div class="card">
     <h2>16. Instalação Fora da Play Store</h2>
 
-    <p>O aplicativo poderá ser distribuído fora da Google Play Store.</p>
+    <p><strong>Cláusula 16.1:</strong> O aplicativo poderá ser distribuído fora da Google Play Store.</p>
 
-    <p>Nesses casos, a instalação dependerá da autorização manual da própria usuária no Android.</p>
+    <p><strong>Cláusula 16.2:</strong> A instalação dependerá de autorização manual da própria usuária no Android.</p>
 
-    <p>A usuária é responsável por instalar o aplicativo apenas através de fontes confiáveis.</p>
+    <p><strong>Cláusula 16.3:</strong> A usuária é responsável por instalar o aplicativo apenas através de fontes confiáveis.</p>
+
+    <p><strong>Cláusula 16.4:</strong> O aplicativo poderá recomendar verificações de segurança do Android e Google Play Protect.</p>
 </div>
 
 <div class="card">
-    <h2>17. Alterações nos Termos</h2>
+    <h2>17. Atualizações do Aplicativo</h2>
 
-    <p>Os presentes Termos de Uso e Política de Privacidade poderão ser atualizados futuramente para melhorias, adequações legais, técnicas ou de segurança.</p>
+    <p><strong>Cláusula 17.1:</strong> O aplicativo poderá receber atualizações destinadas a melhorias de desempenho, estabilidade e segurança.</p>
 
-    <p>O uso contínuo do aplicativo após alterações representa concordância com os termos atualizados.</p>
+    <p><strong>Cláusula 17.2:</strong> Funcionalidades poderão ser alteradas, adicionadas ou removidas futuramente.</p>
+
+    <p><strong>Cláusula 17.3:</strong> Atualizações poderão modificar elementos visuais, permissões ou comportamento interno do aplicativo.</p>
+
+    <p><strong>Cláusula 17.4:</strong> O uso contínuo do aplicativo após atualizações representa concordância com eventuais alterações.</p>
 </div>
 
 <div class="card">
-    <h2>18. Uso Responsável</h2>
+    <h2>18. Alterações nos Termos</h2>
 
-    <p>A usuária concorda em utilizar o aplicativo de forma responsável, ética e compatível com a legislação aplicável.</p>
+    <p><strong>Cláusula 18.1:</strong> Estes Termos de Uso poderão ser atualizados futuramente.</p>
 
-    <p>O aplicativo não deve ser utilizado para práticas ilegais, perseguição, assédio, fraude ou qualquer atividade indevida.</p>
+    <p><strong>Cláusula 18.2:</strong> Alterações poderão ocorrer por motivos legais, técnicos, operacionais ou de segurança.</p>
+
+    <p><strong>Cláusula 18.3:</strong> A versão mais recente dos termos poderá substituir versões anteriores.</p>
+
+    <p><strong>Cláusula 18.4:</strong> O uso contínuo do aplicativo representa concordância com os termos atualizados.</p>
 </div>
 
 <div class="card">
-    <h2>19. Dependência de Aplicativos Externos</h2>
+    <h2>19. Uso Responsável</h2>
 
-    <p>Algumas funcionalidades dependem de aplicativos externos instalados no dispositivo, como telefone, SMS, mapas ou aplicativos de comunicação.</p>
+    <p><strong>Cláusula 19.1:</strong> A usuária concorda em utilizar o aplicativo de forma ética e compatível com a legislação.</p>
 
-    <p>O funcionamento dessas funcionalidades poderá variar conforme disponibilidade e compatibilidade dos aplicativos instalados pela própria usuária.</p>
+    <p><strong>Cláusula 19.2:</strong> O aplicativo não deve ser utilizado para perseguição, assédio, fraude ou atividades ilegais.</p>
+
+    <p><strong>Cláusula 19.3:</strong> O uso indevido do aplicativo poderá resultar em limitações de funcionalidades.</p>
+
+    <p><strong>Cláusula 19.4:</strong> A usuária é responsável pelas ações realizadas através do próprio dispositivo.</p>
 </div>
 
 <div class="card">
-    <h2>20. Exclusão de Dados Locais</h2>
+    <h2>20. Dependência de Serviços Externos</h2>
 
-    <p>A usuária poderá remover dados armazenados localmente apagando os dados do aplicativo nas configurações do Android ou desinstalando o aplicativo.</p>
+    <p><strong>Cláusula 20.1:</strong> Algumas funcionalidades dependem de aplicativos externos instalados no dispositivo.</p>
 
-    <p>Após a remoção, determinadas informações poderão não ser recuperáveis.</p>
+    <p><strong>Cláusula 20.2:</strong> Serviços externos poderão incluir telefone, SMS, mapas, GPS ou aplicativos de comunicação.</p>
+
+    <p><strong>Cláusula 20.3:</strong> O funcionamento poderá variar conforme disponibilidade desses aplicativos.</p>
+
+    <p><strong>Cláusula 20.4:</strong> O aplicativo não possui controle sobre falhas de serviços externos.</p>
 </div>
 
 <div class="card">
-    <h2>21. Atualizações do Aplicativo</h2>
+    <h2>21. Uso Offline</h2>
 
-    <p>O aplicativo poderá receber atualizações destinadas a melhorias de desempenho, segurança, estabilidade ou compatibilidade.</p>
+    <p><strong>Cláusula 21.1:</strong> Algumas funcionalidades poderão operar parcialmente sem internet.</p>
 
-    <p>Algumas funcionalidades poderão ser alteradas, adicionadas ou removidas futuramente.</p>
+    <p><strong>Cláusula 21.2:</strong> Recursos relacionados a mapas, localização em tempo real ou comunicação poderão exigir conexão ativa.</p>
+
+    <p><strong>Cláusula 21.3:</strong> O funcionamento offline poderá variar conforme o dispositivo.</p>
 </div>
 
 <div class="card">
-    <h2>22. Uso Offline</h2>
+    <h2>22. Segurança do Dispositivo</h2>
 
-    <p>Determinadas funcionalidades podem operar parcialmente sem conexão com internet.</p>
+    <p><strong>Cláusula 22.1:</strong> A segurança do aplicativo também depende das práticas de segurança da própria usuária.</p>
 
-    <p>Recursos dependentes de mapas, localização em tempo real, WhatsApp ou serviços externos poderão exigir conexão ativa.</p>
+    <p><strong>Cláusula 22.2:</strong> Recomenda-se utilização de senha, PIN ou biometria no dispositivo.</p>
+
+    <p><strong>Cláusula 22.3:</strong> Recomenda-se manter o Android atualizado.</p>
+
+    <p><strong>Cláusula 22.4:</strong> Recomenda-se instalar apenas aplicativos confiáveis.</p>
 </div>
 
 <div class="card">
-    <h2>23. Segurança do Dispositivo</h2>
+    <h2>23. Exclusão de Dados</h2>
 
-    <p>A segurança do aplicativo também depende das práticas de segurança adotadas pela própria usuária.</p>
+    <p><strong>Cláusula 23.1:</strong> A usuária poderá remover dados locais apagando os dados do aplicativo nas configurações do Android.</p>
 
-    <ul>
-        <li>Uso de senha no dispositivo</li>
+    <p><strong>Cláusula 23.2:</strong> A desinstalação poderá remover informações armazenadas localmente.</p>
 
-        <li>Atualizações do Android</li>
-
-        <li>Instalação apenas de aplicativos confiáveis</li>
-
-        <li>Proteção física do aparelho</li>
-    </ul>
+    <p><strong>Cláusula 23.3:</strong> Alguns dados removidos poderão não ser recuperáveis.</p>
 </div>
 
 <div class="card">
-    <h2>24. Direitos da Usuária</h2>
+    <h2>24. Transparência</h2>
 
-    <p>A usuária possui controle sobre permissões concedidas ao aplicativo.</p>
+    <p><strong>Cláusula 24.1:</strong> O aplicativo busca operar com foco em transparência e privacidade.</p>
 
-    <p>As permissões podem ser revisadas, alteradas ou removidas diretamente nas configurações do Android.</p>
+    <p><strong>Cláusula 24.2:</strong> Nenhuma funcionalidade sensível é executada sem permissões do Android.</p>
+
+    <p><strong>Cláusula 24.3:</strong> O aplicativo não executa ações ocultas em segundo plano fora das funcionalidades informadas.</p>
+
+    <p><strong>Cláusula 24.4:</strong> A usuária poderá revisar permissões diretamente nas configurações do sistema.</p>
 </div>
 
 <div class="card">
-    <h2>25. Aceitação dos Termos</h2>
+    <h2>25. Tecnologias Utilizadas</h2>
 
-    <p>Ao continuar utilizando o aplicativo, a usuária declara que leu, compreendeu e concorda com todos os termos apresentados nesta página.</p>
+    <p><strong>Cláusula 25.1:</strong> O aplicativo utiliza tecnologias baseadas em WebView, HTML, CSS e JavaScript.</p>
+
+    <p><strong>Cláusula 25.2:</strong> Scripts executados possuem finalidade funcional relacionada ao aplicativo.</p>
+
+    <p><strong>Cláusula 25.3:</strong> O aplicativo não executa código destinado a espionagem ou mineração oculta de dados.</p>
 </div>
 
 <div class="card">
-    <h2>26. Transparência</h2>
+    <h2>26. Compatibilidade de Sensores</h2>
 
-    <p>O aplicativo busca operar com foco em privacidade, transparência e controle da usuária.</p>
+    <p><strong>Cláusula 26.1:</strong> Recursos relacionados ao acelerômetro dependem da disponibilidade do sensor no aparelho.</p>
 
-    <p>Nenhuma funcionalidade sensível é executada sem permissões do Android.</p>
+    <p><strong>Cláusula 26.2:</strong> Sensores poderão apresentar diferenças de precisão entre fabricantes.</p>
 
-    <p>O aplicativo não executa monitoramento oculto, rastreamento contínuo ou ações secretas em segundo plano.</p>
+    <p><strong>Cláusula 26.3:</strong> O Android poderá suspender sensores em economia de bateria.</p>
+
+    <p><strong>Cláusula 26.4:</strong> Restrições do fabricante poderão limitar funcionalidades relacionadas a movimento.</p>
 </div>
 
 <div class="card">
-    <h2>27. Considerações Finais</h2>
+    <h2>27. Chamadas Automáticas</h2>
 
-    <p>Este aplicativo deve ser utilizado como ferramenta complementar de apoio pessoal.</p>
+    <p><strong>Cláusula 27.1:</strong> O recurso de chamadas automáticas depende da permissão de telefone concedida pela usuária.</p>
 
-    <p>Em situações reais de emergência, risco imediato ou violência, procure imediatamente autoridades competentes e serviços oficiais de emergência.</p>
+    <p><strong>Cláusula 27.2:</strong> Sem permissão adequada, chamadas automáticas poderão não funcionar.</p>
 
-    <p>O aplicativo não substitui polícia, atendimento médico, órgãos governamentais ou serviços especializados de proteção.</p>
+    <p><strong>Cláusula 27.3:</strong> O aplicativo poderá utilizar o discador padrão do Android.</p>
+
+    <p><strong>Cláusula 27.4:</strong> O funcionamento depende da operadora e disponibilidade de rede.</p>
 </div>
 
-<button onclick="aceitar()" class="botao">Continuar</button>
+<div class="card">
+    <h2>28. Falhas Técnicas</h2>
+
+    <p><strong>Cláusula 28.1:</strong> O aplicativo poderá apresentar falhas técnicas temporárias.</p>
+
+    <p><strong>Cláusula 28.2:</strong> Funcionalidades poderão ser afetadas por atualizações do Android.</p>
+
+    <p><strong>Cláusula 28.3:</strong> Sensores e permissões poderão apresentar comportamento diferente entre aparelhos.</p>
+
+    <p><strong>Cláusula 28.4:</strong> O desenvolvedor poderá corrigir falhas futuramente através de atualizações.</p>
+</div>
+
+<div class="card">
+    <h2>29. Limitação de Responsabilidade</h2>
+
+    <p><strong>Cláusula 29.1:</strong> O aplicativo é uma ferramenta complementar de apoio.</p>
+
+    <p><strong>Cláusula 29.2:</strong> O aplicativo não substitui polícia, bombeiros, SAMU ou autoridades oficiais.</p>
+
+    <p><strong>Cláusula 29.3:</strong> Não existe garantia absoluta de proteção ou prevenção de riscos.</p>
+
+    <p><strong>Cláusula 29.4:</strong> O desenvolvedor não se responsabiliza por indisponibilidades externas.</p>
+</div>
+
+<div class="card">
+    <h2>30. Aceitação dos Termos</h2>
+
+    <p><strong>Cláusula 30.1:</strong> Ao continuar utilizando o aplicativo, a usuária declara concordar com estes termos.</p>
+
+    <p><strong>Cláusula 30.2:</strong> Caso não concorde com os termos, recomenda-se interromper o uso do aplicativo.</p>
+
+    <p><strong>Cláusula 30.3:</strong> Estes termos possuem finalidade informativa, operacional e de transparência.</p>
+</div>
+
+<div class="card">
+    <h2>16. Instalação Fora da Play Store</h2>
+
+    <p><strong>Cláusula 16.1:</strong> O aplicativo poderá ser distribuído fora da Google Play Store.</p>
+
+    <p><strong>Cláusula 16.2:</strong> A instalação dependerá de autorização manual da própria usuária no Android.</p>
+
+    <p><strong>Cláusula 16.3:</strong> A usuária é responsável por instalar o aplicativo apenas através de fontes confiáveis.</p>
+
+    <p><strong>Cláusula 16.4:</strong> O aplicativo poderá recomendar verificações de segurança do Android e Google Play Protect.</p>
+</div>
+
+<div class="card">
+    <h2>17. Atualizações do Aplicativo</h2>
+
+    <p><strong>Cláusula 17.1:</strong> O aplicativo poderá receber atualizações destinadas a melhorias de desempenho, estabilidade e segurança.</p>
+
+    <p><strong>Cláusula 17.2:</strong> Funcionalidades poderão ser alteradas, adicionadas ou removidas futuramente.</p>
+
+    <p><strong>Cláusula 17.3:</strong> Atualizações poderão modificar elementos visuais, permissões ou comportamento interno do aplicativo.</p>
+
+    <p><strong>Cláusula 17.4:</strong> O uso contínuo do aplicativo após atualizações representa concordância com eventuais alterações.</p>
+</div>
+
+<div class="card">
+    <h2>18. Alterações nos Termos</h2>
+
+    <p><strong>Cláusula 18.1:</strong> Estes Termos de Uso poderão ser atualizados futuramente.</p>
+
+    <p><strong>Cláusula 18.2:</strong> Alterações poderão ocorrer por motivos legais, técnicos, operacionais ou de segurança.</p>
+
+    <p><strong>Cláusula 18.3:</strong> A versão mais recente dos termos poderá substituir versões anteriores.</p>
+
+    <p><strong>Cláusula 18.4:</strong> O uso contínuo do aplicativo representa concordância com os termos atualizados.</p>
+</div>
+
+<div class="card">
+    <h2>19. Uso Responsável</h2>
+
+    <p><strong>Cláusula 19.1:</strong> A usuária concorda em utilizar o aplicativo de forma ética e compatível com a legislação.</p>
+
+    <p><strong>Cláusula 19.2:</strong> O aplicativo não deve ser utilizado para perseguição, assédio, fraude ou atividades ilegais.</p>
+
+    <p><strong>Cláusula 19.3:</strong> O uso indevido do aplicativo poderá resultar em limitações de funcionalidades.</p>
+
+    <p><strong>Cláusula 19.4:</strong> A usuária é responsável pelas ações realizadas através do próprio dispositivo.</p>
+</div>
+
+<div class="card">
+    <h2>20. Dependência de Serviços Externos</h2>
+
+    <p><strong>Cláusula 20.1:</strong> Algumas funcionalidades dependem de aplicativos externos instalados no dispositivo.</p>
+
+    <p><strong>Cláusula 20.2:</strong> Serviços externos poderão incluir telefone, SMS, mapas, GPS ou aplicativos de comunicação.</p>
+
+    <p><strong>Cláusula 20.3:</strong> O funcionamento poderá variar conforme disponibilidade desses aplicativos.</p>
+
+    <p><strong>Cláusula 20.4:</strong> O aplicativo não possui controle sobre falhas de serviços externos.</p>
+</div>
+
+<div class="card">
+    <h2>21. Uso Offline</h2>
+
+    <p><strong>Cláusula 21.1:</strong> Algumas funcionalidades poderão operar parcialmente sem internet.</p>
+
+    <p><strong>Cláusula 21.2:</strong> Recursos relacionados a mapas, localização em tempo real ou comunicação poderão exigir conexão ativa.</p>
+
+    <p><strong>Cláusula 21.3:</strong> O funcionamento offline poderá variar conforme o dispositivo.</p>
+</div>
+
+<div class="card">
+    <h2>22. Segurança do Dispositivo</h2>
+
+    <p><strong>Cláusula 22.1:</strong> A segurança do aplicativo também depende das práticas de segurança da própria usuária.</p>
+
+    <p><strong>Cláusula 22.2:</strong> Recomenda-se utilização de senha, PIN ou biometria no dispositivo.</p>
+
+    <p><strong>Cláusula 22.3:</strong> Recomenda-se manter o Android atualizado.</p>
+
+    <p><strong>Cláusula 22.4:</strong> Recomenda-se instalar apenas aplicativos confiáveis.</p>
+</div>
+
+<div class="card">
+    <h2>23. Exclusão de Dados</h2>
+
+    <p><strong>Cláusula 23.1:</strong> A usuária poderá remover dados locais apagando os dados do aplicativo nas configurações do Android.</p>
+
+    <p><strong>Cláusula 23.2:</strong> A desinstalação poderá remover informações armazenadas localmente.</p>
+
+    <p><strong>Cláusula 23.3:</strong> Alguns dados removidos poderão não ser recuperáveis.</p>
+</div>
+
+<div class="card">
+    <h2>24. Transparência</h2>
+
+    <p><strong>Cláusula 24.1:</strong> O aplicativo busca operar com foco em transparência e privacidade.</p>
+
+    <p><strong>Cláusula 24.2:</strong> Nenhuma funcionalidade sensível é executada sem permissões do Android.</p>
+
+    <p><strong>Cláusula 24.3:</strong> O aplicativo não executa ações ocultas em segundo plano fora das funcionalidades informadas.</p>
+
+    <p><strong>Cláusula 24.4:</strong> A usuária poderá revisar permissões diretamente nas configurações do sistema.</p>
+</div>
+
+<div class="card">
+    <h2>25. Tecnologias Utilizadas</h2>
+
+    <p><strong>Cláusula 25.1:</strong> O aplicativo utiliza tecnologias baseadas em WebView, HTML, CSS e JavaScript.</p>
+
+    <p><strong>Cláusula 25.2:</strong> Scripts executados possuem finalidade funcional relacionada ao aplicativo.</p>
+
+    <p><strong>Cláusula 25.3:</strong> O aplicativo não executa código destinado a espionagem ou mineração oculta de dados.</p>
+</div>
+
+<div class="card">
+    <h2>26. Compatibilidade de Sensores</h2>
+
+    <p><strong>Cláusula 26.1:</strong> Recursos relacionados ao acelerômetro dependem da disponibilidade do sensor no aparelho.</p>
+
+    <p><strong>Cláusula 26.2:</strong> Sensores poderão apresentar diferenças de precisão entre fabricantes.</p>
+
+    <p><strong>Cláusula 26.3:</strong> O Android poderá suspender sensores em economia de bateria.</p>
+
+    <p><strong>Cláusula 26.4:</strong> Restrições do fabricante poderão limitar funcionalidades relacionadas a movimento.</p>
+</div>
+
+<div class="card">
+    <h2>27. Chamadas Automáticas</h2>
+
+    <p><strong>Cláusula 27.1:</strong> O recurso de chamadas automáticas depende da permissão de telefone concedida pela usuária.</p>
+
+    <p><strong>Cláusula 27.2:</strong> Sem permissão adequada, chamadas automáticas poderão não funcionar.</p>
+
+    <p><strong>Cláusula 27.3:</strong> O aplicativo poderá utilizar o discador padrão do Android.</p>
+
+    <p><strong>Cláusula 27.4:</strong> O funcionamento depende da operadora e disponibilidade de rede.</p>
+</div>
+
+<div class="card">
+    <h2>28. Falhas Técnicas</h2>
+
+    <p><strong>Cláusula 28.1:</strong> O aplicativo poderá apresentar falhas técnicas temporárias.</p>
+
+    <p><strong>Cláusula 28.2:</strong> Funcionalidades poderão ser afetadas por atualizações do Android.</p>
+
+    <p><strong>Cláusula 28.3:</strong> Sensores e permissões poderão apresentar comportamento diferente entre aparelhos.</p>
+
+    <p><strong>Cláusula 28.4:</strong> O desenvolvedor poderá corrigir falhas futuramente através de atualizações.</p>
+</div>
+
+<div class="card">
+    <h2>29. Limitação de Responsabilidade</h2>
+
+    <p><strong>Cláusula 29.1:</strong> O aplicativo é uma ferramenta complementar de apoio.</p>
+
+    <p><strong>Cláusula 29.2:</strong> O aplicativo não substitui polícia, bombeiros, SAMU ou autoridades oficiais.</p>
+
+    <p><strong>Cláusula 29.3:</strong> Não existe garantia absoluta de proteção ou prevenção de riscos.</p>
+
+    <p><strong>Cláusula 29.4:</strong> O desenvolvedor não se responsabiliza por indisponibilidades externas.</p>
+</div>
+
+<div class="card">
+    <h2>30. Aceitação dos Termos</h2>
+
+    <p><strong>Cláusula 30.1:</strong> Ao continuar utilizando o aplicativo, a usuária declara concordar com estes termos.</p>
+
+    <p><strong>Cláusula 30.2:</strong> Caso não concorde com os termos, recomenda-se interromper o uso do aplicativo.</p>
+
+    <p><strong>Cláusula 30.3:</strong> Estes termos possuem finalidade informativa, operacional e de transparência.</p>
+</div>
+
+<button onclick="aceitar()" class="botao">
+    Li e Concordo com os Termos
+</button>
 
 <div class="footer">
-    O aplicativo opera com foco em privacidade, transparência e controle da usuária.
-    <br><br>
-    Nenhuma funcionalidade sensível é executada sem permissões do Android.
-    <br><br>
-    O aplicativo não executa monitoramento oculto, rastreamento contínuo ou ações secretas em segundo plano.
+
+    <p>
+        Mulher Amparada 💜
+    </p>
+
+    <p>
+        Este aplicativo opera com foco em privacidade, transparência,
+        segurança e controle da própria usuária.
+    </p>
+
+    <p>
+        Nenhuma funcionalidade sensível é executada sem permissões
+        concedidas pelo Android.
+    </p>
+
+    <p>
+        O aplicativo não realiza monitoramento oculto,
+        espionagem, rastreamento contínuo ou ações secretas
+        em segundo plano.
+    </p>
+
+    <p>
+        Algumas funcionalidades podem depender de internet,
+        permissões do Android, disponibilidade do aparelho,
+        sensores internos, operadora móvel e aplicativos externos.
+    </p>
+
+    <p>
+        O recurso de proteção por movimento depende do acelerômetro
+        disponível no dispositivo Android.
+    </p>
+
+    <p>
+        O aplicativo não substitui serviços oficiais de emergência,
+        autoridades públicas, atendimento médico ou proteção policial.
+    </p>
+
+    <p>
+        Em situações reais de risco imediato,
+        procure imediatamente ajuda especializada e serviços oficiais.
+    </p>
+
+    <p class="copy">
+        © 2026 Mulher Amparada — Todos os direitos reservados.
+    </p>
+
 </div>
 
 <script>
