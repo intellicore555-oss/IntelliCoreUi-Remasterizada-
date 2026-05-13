@@ -297,6 +297,31 @@ O app não garante segurança imediata.
   </a>
 </div>
 
+<div class="box-form">
+
+<button 
+  onclick="window.location.href='eu.html'"
+  style="
+    background: linear-gradient(135deg, pink, lightpink);
+    color: #fff;
+    padding: 14px 26px;
+    border: none;
+    border-radius: 120px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  "
+  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.6)'"
+  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 6px 15px rgba(0,0,0,0.4)'"
+>
+  Sobre o desenvolvedor 
+</button>
+
+</div>
+
 <footer class="footer">
   <span id="typing"></span>
 </footer>
@@ -519,7 +544,7 @@ titulo.addEventListener("touchend", (e)=>{
 </style>
 
 <script>
-const text = 'Feito com ❤️ por intellicore555-oss: "Fiz tudo sozinho!, não fiz curso nem nada, fiz apenas usando uma i.a e minha força de vontade..., mas a divulgação a escola estadual dom pedro primeiro fez e me ajudou!, muito obrigado!"';
+const text = 'Feito com ❤️ por intellicore555-oss:';
 const typing = document.getElementById("typing");
 
 let i = 0;
