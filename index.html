@@ -32,36 +32,70 @@ body {
 .section {
     position: relative;
     min-height: 100vh;
-    padding: 60px 20px;
+    width: 90%;
+    left: 5%;
+
+    padding: 70px 24px;
+
+    border-radius: 40px;
+
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    flex-direction: column;
 
     opacity: 0;
-    transform: translateY(60px);
-    transition: all 0.4s ease;
+    transform: translateY(50px) scale(0.98);
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+
     overflow: hidden;
 }
 
+/* animação de entrada */
 .section.show {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
-/* TEXTO */
+/* título */
 .section h1 {
-    font-size: 36px;
+    font-size: clamp(28px, 4vw, 40px);
     color: #ff4da6;
-    margin-bottom: 15px;
+
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+
+    text-shadow: 0 0 20px rgba(255, 77, 166, 0.25);
 }
 
+/* texto */
 .section p {
-    max-width: 700px;
+    max-width: 680px;
     margin: 10px auto;
-    color: #ccc;
+
+    color: rgba(255, 255, 255, 0.78);
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.8;
+
+    font-weight: 400;
+}
+
+/* destaque */
+.section p strong {
+    color: #ff7abf;
+    font-weight: 600;
+}
+
+/* responsivo melhor */
+@media (max-width: 600px) {
+    .section {
+        padding: 60px 18px;
+    }
+
+    .section p {
+        font-size: 15px;
+    }
 }
 
 /* SHAPES */
@@ -157,66 +191,66 @@ body {
 }
 
 /* TOGGLE */
-.toggle {
-  width: 60%;
-  height: 55px;
-  border: 2px solid #E6A8D7;
-  border-radius: 80px;
-  padding: 5px;
+.toggle{
+  width:min(420px,88%);
+  height:68px;
 
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
 
-  display: flex;
-  align-items: center;
-  z-index: 999;
+  border-radius:999px;
+  padding:6px;
 
-  /* 🔥 importante */
-  overflow: hidden;
-  background: violet;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+
+  backdrop-filter:blur(14px);
+
+  overflow:hidden;
+  z-index:999;
 }
 
-/* 🌊 camada da onda */
-.toggle::before {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  top: -60%;
-  left: -50%;
+.toggle::before{
+  content:"";
+  position:absolute;
+  inset:0;
 
-  background: radial-gradient(circle at 50% 50%, skyblue , transparent 60%);
-
-  animation: waveMove 1s linear infinite;
-  z-index: -1;
+  background:radial-gradient(
+    circle,
+    rgba(168,85,247,.35),
+    transparent 70%
+  );
 }
 
-/* 🌊 animação */
-@keyframes waveMove {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(2);
-  }
-  100% {
-    transform: scale(1);
-  }
+.alavanca{
+
+  width:50%;
+  height:100%;
+
+  border-radius:999px;
+
+  background:
+  linear-gradient(
+    135deg,
+    #ff4fa3,
+    #a855f7
+  );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  position:relative;
+
+  z-index:2;
+
+  transition:
+  transform .35s cubic-bezier(.22,.61,.36,1);
 }
 
 
-.alavanca {
-  background: #E6A8D7;
-  width: 50%;
-  height: 100%;
-  border-radius: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
 
 .icon2 { display: none; }
 
@@ -288,131 +322,127 @@ height: 30px;
 <div class="section">
     <div class="shape circle"></div>
     <div>
-        <h1>Chegou o...</h1>
-        <p>Amiga… respira fundo porque isso aqui tá diferente de tudo 😳</p>
-        <p>Não é só mais um app, é aquele tipo que você abre e pensa: “ok… isso aqui foi feito pensando em mim”.</p>
-        <p>Leve, bonito e direto… sem complicação e sem dor de cabeça.</p>
-    </div>
-</div>
-
-<div class="section">
-    <div class="shape triangle"></div>
-    <canvas id="fogos"></canvas>
-    <div>
-        <h1 id="titulo">Mulher amparada</h1>
-        <p>Miga… isso aqui não é só atualização, é uma versão totalmente repensada 💅</p>
-        <p>Tudo foi ajustado pra você usar com facilidade, sem travar e sem se perder.</p>
-        <p>Cada detalhe foi feito pra ser simples, intuitivo e agradável no dia a dia.</p>
-        <p>Sabe quando tudo flui melhor? então… é essa a ideia.</p>
+        <h1>Chegou o Mulher Amparada 💗</h1>
+        <p>Amiga… respira fundo porque isso aqui é diferente de tudo ✨</p>
+        <p>Não é só mais um app, é aquele tipo que parece que entende você de verdade.</p>
+        <p>Leve, bonito e simples… pra te acompanhar sem complicação no dia a dia 💅</p>
     </div>
 </div>
 
 <div class="section">
     <div class="shape triangle"></div>
     <div>
-        <h1>Botão principal</h1>
-        <p>Grande, visível e fácil de usar.</p>
-        <p>Com um toque você acessa a função principal rapidamente.</p>
-        <p>Sem ficar procurando ou perdendo tempo.</p>
-        <p>Direto ao ponto, como tem que ser.</p>
+        <h1>Uma versão novinha ✨</h1>
+        <p>O Mulher Amparada foi todo repaginado pra ficar mais fácil, mais fluido e mais gostosinho de usar 💖</p>
+        <p>Tudo agora tá mais organizado, sem bagunça e sem te deixar perdida.</p>
+        <p>É só abrir e usar, bem leve mesmo 🌸</p>
     </div>
 </div>
 
 <div class="section">
     <div class="shape circle"></div>
     <div>
-        <h1>Controle</h1>
-        <p>O app solicita permissões apenas quando necessário.</p>
-        <p>Você pode aceitar ou negar conforme preferir.</p>
-        <p>As configurações podem ser ajustadas a qualquer momento.</p>
-        <p>Tudo dentro das opções do seu dispositivo.</p>
+        <h1>📅 Seu ciclo com carinho</h1>
+        <p>Agora você consegue acompanhar seu ciclo menstrual de um jeitinho simples e organizado 💗</p>
+        <p>Vai ficando tudo mais claro sobre seus dias, sem estresse e sem complicação.</p>
+        <p>É só registrar e deixar o app te ajudar 🌷</p>
     </div>
 </div>
 
 <div class="section">
     <div class="shape line"></div>
     <div>
-        <h1>Privacidade</h1>
-        <p>O app foi desenvolvido pensando em reduzir ao máximo o uso de dados.</p>
-        <p>As informações permanecem no dispositivo sempre que possível.</p>
-        <p>Não possui anúncios integrados.</p>
-        <p>Mesmo assim, a segurança também depende do uso do aparelho e do sistema.</p>
+        <h1>📓 Diário + pontuação</h1>
+        <p>Um espacinho só seu pra escrever como você tá se sentindo 💕</p>
+        <p>E ainda tem um sistema de pontuação pra acompanhar sua evolução de forma leve e interativa.</p>
+        <p>Tipo um cantinho pessoal mesmo ✨</p>
     </div>
 </div>
 
 <div class="section">
     <div class="shape circle"></div>
     <div>
-        <h1>Totalmente grátis e livre de anúncios (eu fiz o codigo pra isso, se está assim pode depender de terceiros...)</h1>
-        <p>Você pode usar sem custos e sem interrupções por anúncios.</p>
-        <p>Feito pra ser acessível e funcional no seu dia a dia.</p>
+        <h1>🔐 Seu acesso protegido</h1>
+        <p>Você pode proteger tudo com senha, padrão, digital ou rosto (se seu celular tiver isso) 💅</p>
+        <p>Assim só você entra e fica tudo bem seguro do seu jeitinho.</p>
+    </div>
+</div>
+
+<div class="section">
+    <div class="shape triangle"></div>
+    <div>
+        <h1>🚨 Ajuda rápida quando precisar</h1>
+        <p>Com um toque você pode acessar números importantes como:</p>
+        <p><strong>190</strong>, <strong>192</strong>, <strong>180</strong> e <strong>191</strong> 💗</p>
+        <p>Pra quando precisar de ajuda rapidinho, sem perder tempo.</p>
     </div>
 </div>
 
 <div class="section">
     <div class="shape line"></div>
-
     <div>
-        <h1>Como instalar e usar?</h1>
-
-        <p>Primeiro, toque na parte direita da alavanca localizada na parte inferior da tela.</p>
-
-        <p>Nessa seção estarão disponíveis os botões de download do aplicativo.</p>
-
-        <p>Recomenda-se utilizar sempre a versão mais recente disponível.</p>
-
-        <p>Baixe o arquivo APK normalmente.</p>
-
-        <p>Por se tratar de um aplicativo distribuído fora da Google Play Store, o Android poderá solicitar autorização para instalação de aplicativos de fontes externas.</p>
-
-        <p>Isso faz parte das proteções padrão de segurança do Android.</p>
-
-        <p>Se desejar continuar, basta permitir temporariamente a instalação para o navegador ou aplicativo utilizado no download.</p>
-
-        <p>Depois disso, toque em <strong>"Abrir"</strong> ou acesse a pasta de downloads do dispositivo para iniciar a instalação.</p>
-
-        <p>Durante o processo, o Android ou o Google Play Protect podem exibir mensagens como:</p>
-
-        <p><strong>"App potencialmente arriscado"</strong></p>
-
-        <p><strong>"Este app foi instalado de fonte desconhecida"</strong></p>
-
-        <p><strong>"O Play Protect não reconhece este aplicativo"</strong></p>
-
-        <p>Esses avisos são comuns em aplicativos instalados fora da loja oficial ou em aplicativos novos que ainda não possuem validação ampla nos sistemas automáticos do Android.</p>
-
-        <p>Isso não significa automaticamente que o aplicativo seja malicioso.</p>
-
-        <p>O Android 14 (SDK 34) possui mecanismos adicionais de segurança, verificação de permissões e proteção de instalação que podem tornar esses avisos mais frequentes.</p>
-
-        <p>O aplicativo não solicita desativação do Play Protect nem tenta contornar mecanismos de segurança do Android.</p>
-
-        <p>Recomenda-se manter o Google Play Protect ativado para maior segurança do dispositivo.</p>
-
-        <p>A decisão de instalar e utilizar o aplicativo é sempre da própria usuária.</p>
-
-        <p><strong>Instalação concluída.</strong></p>
-
-        <p>Ao abrir o aplicativo pela primeira vez, o Android poderá solicitar permissões específicas conforme as funcionalidades utilizadas.</p>
-
-        <p><strong>Telefone:</strong> utilizada para funções relacionadas a chamadas de emergência ou abertura do discador do Android.</p>
-
-        <p><strong>Contatos:</strong> utilizada para permitir seleção de contatos de confiança definidos pela própria usuária.</p>
-
-        <p><strong>Localização:</strong> utilizada em funcionalidades de SOS, emergência ou compartilhamento de localização.</p>
-
-        <p>Todas as permissões podem ser concedidas, negadas ou revogadas a qualquer momento nas configurações do Android.</p>
-
-        <p>Determinadas funcionalidades podem não funcionar corretamente caso as permissões necessárias sejam negadas.</p>
-
-        <p>O aplicativo foi desenvolvido para funcionar em dispositivos compatíveis com Android moderno, incluindo Android 14 / SDK 34.</p>
-
-        <p style="color:#ff4d6d; font-size:14px; margin-top:10px;">
-            Para maior segurança, recomenda-se instalar o aplicativo apenas através de fontes confiáveis e manter as proteções do Android ativadas.
-        </p>
+        <h1>📍 Sua localização em momentos importantes</h1>
+        <p>Se precisar, você consegue compartilhar sua localização com contatos de confiança 🌸</p>
+        <p>É uma forma rápida de pedir ajuda quando for necessário.</p>
     </div>
 </div>
 
+<div class="section">
+    <div class="shape circle"></div>
+    <div>
+        <h1>👏 Ativação por palmas</h1>
+        <p>Sim, miga… você pode ativar funções só com palmas ou sons mais altos 💅</p>
+        <p>Bem simples e pensado pra situações em que você não consegue mexer no celular.</p>
+    </div>
+</div>
+
+<div class="section">
+    <div class="shape line"></div>
+    <div>
+        <h1>🔒 Privacidade de verdade</h1>
+        <p>O app foi feito pra usar o mínimo possível de dados 💖</p>
+        <p>Quase tudo fica no seu próprio celular, sem exposição desnecessária.</p>
+        <p>Sem anúncios, sem interrupção… só você e o app 🌷</p>
+    </div>
+</div>
+
+<div class="section">
+    <div class="shape circle"></div>
+    <div>
+        <h1>💖 Totalmente grátis</h1>
+        <p>Você pode usar tudo sem pagar nada ✨</p>
+        <p>Sem assinatura, sem pegadinha e sem anúncios incomodando.</p>
+        <p>Do jeitinho leve que deveria ser 💅</p>
+    </div>
+</div>
+
+<div class="section">
+    <div class="shape triangle"></div>
+    <div>
+        <h1>📲 Como baixar, instalar e usar</h1>
+
+        <p>1. Toque no botão inferior pra acessar o download 💗</p>
+
+        <p>2. Baixe o arquivo APK normalmente no seu celular.</p>
+
+        <p>3. Se aparecer aviso de “fonte desconhecida”, fica tranquila… isso é normal para apps instalados fora da loja oficial 🌸</p>
+
+        <p>4. Basta permitir a instalação nas configurações do seu celular.</p>
+
+        <p>5. Depois toque em “Abrir” e pronto ✨</p>
+
+        <p>6. Na primeira vez pode pedir permissões como:</p>
+
+        <p><strong>Telefone:</strong> pra chamadas de emergência</p>
+        <p><strong>Localização:</strong> pra situações de SOS</p>
+        <p><strong>Contatos:</strong> pra contatos de confiança</p>
+<p><strong>Microfone:</strong> para o serviço de proteção por barulho</p>
+
+        <p>Você pode aceitar ou negar tudo, e mudar depois quando quiser 💕</p>
+
+        <p>Prontinho… agora é só aproveitar 🌷</p>
+    </div>
+</div>
 <br><br>
 
 <!-- BARRA INFERIOR ONE UI -->
@@ -437,6 +467,8 @@ height: 30px;
     </button>
   </div>
 </div>
+
+
 
 <script>
 // ================= SECTIONS (SCROLL) =================
