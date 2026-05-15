@@ -15,275 +15,351 @@
 <meta name="theme-color" content="#000">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Quicksand', sans-serif;
+/* ========== RESET PREMIUM ========== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Quicksand', sans-serif;
 }
 
-body {
-    background: #000;
-    color: #fff;
-    overflow-x: hidden;
+body{
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
 }
 
-/* SEÇÕES */
-.section {
-    position: relative;
-    min-height: 100vh;
-    padding: 60px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+/* ========== LAYOUT BASE ========== */
+.section{
+  position:relative;
+  min-height:100vh;
+  padding:80px 18px;
 
-    opacity: 0;
-    transform: translateY(60px);
-    transition: all 0.4s ease;
-    overflow: hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+
+  opacity:0;
+  transform:translateY(50px);
+  transition:.7s cubic-bezier(.22,.61,.36,1);
+
+  overflow:hidden;
 }
 
-.section.show {
-    opacity: 1;
-    transform: translateY(0);
+.section.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
-/* TEXTO */
-.section h1 {
-    font-size: 36px;
-    color: #ff4da6;
-    margin-bottom: 15px;
+.container{
+  width:100%;
+  max-width:520px;
 }
 
-.section p {
-    max-width: 700px;
-    margin: 10px auto;
-    color: #ccc;
-    font-size: 16px;
-    line-height: 1.7;
+/* ========== TEXTOS ========== */
+h1{
+  font-size:clamp(28px,6vw,44px);
+  color:#ff4fa3;
+  margin-bottom:14px;
+  font-weight:800;
 }
 
-/* SHAPES */
-.shape {
-    position: absolute;
-    opacity: 0.15;
+h2{
+  font-size:22px;
+  margin:15px 0;
+  color:#fff;
 }
 
-.circle {
-    width: 200px;
-    height: 200px;
-    border: 2px solid #ff4da6;
-    border-radius: 50%;
-    top: 10%;
-    right: 10%;
-    animation: spin 20s linear infinite;
+p{
+  color:#cfcfcf;
+  font-size:15px;
+  line-height:1.7;
+  margin:10px auto;
+  max-width:600px;
 }
 
-.line {
-    width: 300px;
-    height: 2px;
-    background: #ff4da6;
-    bottom: 20%;
-    left: -100px;
-    animation: moveLine 8s infinite alternate;
+/* título dinâmico */
+.dynamic-title{
+  font-size:26px;
+  font-weight:800;
+  transition:.3s;
 }
 
-.triangle {
-    width: 0;
-    height: 0;
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
-    border-bottom: 100px solid #ff4da6;
-    top: 50%;
-    left: 70%;
-    animation: float 6s ease-in-out infinite;
+/* ========== LABELS ========== */
+.label{
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#ffffff88;
+  font-weight:700;
+  margin:30px 0 15px;
 }
 
-/* ANIMAÇÕES */
-@keyframes spin { to { transform: rotate(360deg); } }
-@keyframes moveLine { to { transform: translateX(120px); } }
-@keyframes float { 50% { transform: translateY(-30px); } }
-
-/* BOTÃO */
-.btn-download {
-    margin-top: 40px;
-    padding: 18px 40px;
-    font-size: 18px;
-    font-weight: 600;
-    color: #fff;
-    background: linear-gradient(135deg, #ff4da6, #ff1e85);
-    border-radius: 100px;
-    text-decoration: none;
-    display: inline-block;
-    box-shadow: 0 0 25px #ff4da655;
-    animation: pulse 2s infinite, swing 3s infinite;
-    margin: 10px;
+/* ========== SHAPES ========== */
+.shape{
+  position:absolute;
+  opacity:.08;
+  pointer-events:none;
 }
 
-@keyframes pulse { 50% { transform: scale(1.08); } }
-@keyframes swing {
-    25% { transform: rotate(2deg); }
-    75% { transform: rotate(-2deg); }
+.circle{
+  width:220px;
+  height:220px;
+  border:2px solid #ff4fa3;
+  border-radius:50%;
+  top:10%;
+  right:10%;
+  animation:spin 25s linear infinite;
 }
 
-/* FOGOS */
-#fogos {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+.line{
+  width:280px;
+  height:2px;
+  background:#ff4fa3;
+  bottom:15%;
+  left:-100px;
+  animation:moveLine 8s ease-in-out infinite alternate;
 }
 
-/* FORM */
+.triangle{
+  width:0;
+  height:0;
+  border-left:60px solid transparent;
+  border-right:60px solid transparent;
+  border-bottom:100px solid #ff4fa3;
+  top:55%;
+  left:65%;
+  animation:float 6s ease-in-out infinite;
+}
+
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes moveLine{to{transform:translateX(120px);}}
+@keyframes float{50%{transform:translateY(-20px);}}
+
+/* ========== WARNING CARD ========== */
+.warning-card{
+  margin:30px auto;
+  padding:18px 20px;
+
+  border-radius:16px;
+  background:rgba(255,77,166,.06);
+  border:1px solid rgba(255,77,166,.25);
+
+  color:#ffd1e8;
+  font-size:14px;
+  line-height:1.6;
+
+  backdrop-filter:blur(12px);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.4),
+    inset 0 1px 0 rgba(255,255,255,.05);
+
+  position:relative;
+}
+
+.warning-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:10%;
+  width:3px;
+  height:80%;
+  background:linear-gradient(#ff4fa3,#ff1e85);
+  border-radius:10px;
+}
+
+/* ========== BOTÃO DOWNLOAD ========== */
+.btn-download{
+  display:inline-block;
+  width:100%;
+  max-width:360px;
+
+  padding:16px 22px;
+  margin:20px auto;
+
+  border-radius:999px;
+  background:linear-gradient(135deg,#ff4fa3,#ff1e85);
+  color:#fff;
+
+  font-weight:800;
+  text-align:center;
+  text-decoration:none;
+
+  position:relative;
+  overflow:hidden;
+
+  box-shadow:0 12px 30px rgba(255,77,166,.35);
+
+  transition:.25s ease;
+}
+
+.btn-download:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 45px rgba(255,77,166,.5);
+}
+
+.btn-download:active{
+  transform:scale(.97);
+}
+
+/* brilho */
+.btn-download::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:120%;
+  height:100%;
+
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.3),
+    transparent
+  );
+
+  transform:skewX(-15deg);
+}
+
+.btn-download:hover::before{
+  animation:shine .8s ease forwards;
+}
+
+@keyframes shine{
+  to{left:120%;}
+}
+
+/* ========== GLASS CARD ========== */
 .box-form{
-  width: 90%;
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 20px;
-  border-radius: 16px;
-  background: #111;
-  text-align: center;
+  width:100%;
+  max-width:360px;
+
+  margin:30px auto;
+  padding:20px;
+
+  border-radius:20px;
+  background:rgba(18,18,18,.55);
+  border:1px solid rgba(255,255,255,.1);
+
+  backdrop-filter:blur(12px);
+
+  text-align:center;
+
+  box-shadow:0 12px 35px rgba(0,0,0,.5);
+
+  transition:.3s ease;
 }
 
-.botao{
-  display: inline-block;
-  padding: 12px 20px;
-  background: skyblue;
-  color: #000;
-  font-weight: bold;
-  border-radius: 120px;
-  text-decoration: none;
+.box-form:hover{
+  transform:translateY(-4px);
 }
 
-/* TOGGLE */
-.toggle {
-  width: 60%;
-  height: 55px;
-  border: 2px solid #E6A8D7;
-  border-radius: 80px;
-  padding: 5px;
+/* ========== BOTÃO SECUNDÁRIO ========== */
+.btn-secondary{
+  width:100%;
+  padding:14px 18px;
 
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.15);
 
-  display: flex;
-  align-items: center;
-  z-index: 999;
+  background:rgba(255,255,255,.06);
+  color:#fff;
 
-  /* 🔥 importante */
-  overflow: hidden;
-  background: violet;
+  font-weight:600;
+  cursor:pointer;
+
+  transition:.25s ease;
 }
 
-/* 🌊 camada da onda */
-.toggle::before {
-  content: "";
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  top: -60%;
-  left: -50%;
-
-  background: radial-gradient(circle at 50% 50%, skyblue , transparent 60%);
-
-  animation: waveMove 1s linear infinite;
-  z-index: -1;
+.btn-secondary:hover{
+  transform:scale(1.03);
+  border-color:#ff4fa3;
 }
 
-/* 🌊 animação */
-@keyframes waveMove {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(2);
-  }
-  100% {
-    transform: scale(1);
-  }
+.btn-secondary:active{
+  transform:scale(.97);
 }
 
-.alavanca {
-  background: #E6A8D7;
-  width: 50%;
-  height: 100%;
-  border-radius: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
-
-.icon2 { display: none; }
-
-.hidden {
-  opacity: 0 !important;
-  pointer-events: none;
-}
-
-/* SECTION FINAL */
-#section1 {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(40px);
-}
-
-#section1.active {
-  pointer-events: auto;
-  animation: fadeUp 0.6s ease forwards;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-}
-
-.alavanca {
-  transform: translateX(100%);
-}
-
-svg {
-width: 30px;
-height: 30px;
+/* ========== GALERIA ========== */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:10px;
+  margin-top:20px;
 }
 
 img{
-    width:90%;
-    max-width:320px;
-
-    border-radius:24px;
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,0.25);
-
-    border:3px solid rgba(255,255,255,0.08);
-
-    transition:0.3s ease;
-
-    display:block;
-
-    margin:auto;
-position: relative;
-margin-bottom: 20px;
-margin-top: 20px;
+  width:100%;
+  border-radius:16px;
+  border:2px solid rgba(255,255,255,.08);
+  transition:.3s;
 }
 
 img:hover{
-    transform:
-    translateY(-6px)
-    scale(1.02);
+  transform:scale(1.03);
+}
 
-    box-shadow:
-    0 18px 40px rgba(0,0,0,0.35);
+/* ========== FOOTER ========== */
+.footer{
+  margin-top:25px;
+  text-align:center;
+  color:#8ad1ff;
+  font-size:13px;
+}
+
+/* ========== TOGGLE (NÃO MEXIDO VISUALMENTE) ========== */
+.toggle{
+  width:min(420px,90%);
+  height:68px;
+
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+
+  border-radius:999px;
+  padding:6px;
+
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+
+  backdrop-filter:blur(14px);
+  z-index:999;
+}
+
+.toggle::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle,rgba(168,85,247,.35),transparent 70%);
+}
+
+.alavanca{
+  width:50%;
+  height:100%;
+  border-radius:999px;
+
+  background:linear-gradient(135deg,#ff4fa3,#a855f7);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  transition:.35s cubic-bezier(.22,.61,.36,1);
+}
+
+/* ========== ANIMAÇÃO SCROLL ========== */
+.section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+svg {
+width: 28px;
+height: 28px;
 }
 </style>
 </head>
@@ -293,301 +369,90 @@ img:hover{
 <!-- SEÇÕES (mantidas iguais) -->
 <!-- FINAL -->
 <div class="section" id="section1">
-    <div class="shape triangle"></div>
-    <div>
-        <h1>Então, o que me diz?</h1>
-        <p>Porque depois disso aqui… não tem mais como usar coisa básica não 😮‍🔥</p>
-        <p>Se prepara pra uma experiência que realmente funciona.</p>
+  <div class="shape triangle"></div>
 
-        <h1 id="titulo" style="margin-top:20px;" class="nao">
-  Tá pronta, princesa?
-</h1>
+  <div class="container">
 
-        <p>Então vem sentir isso aqui na prática 💖</p>
-
-<p style="color: #ff4da6;">
-<strong>Importante:</strong><br><br>
-Este aplicativo é uma ferramenta complementar.<br>
-Ele não substitui órgãos oficiais, serviços de emergência ou canais do governo.<br><br>
-Algumas funções dependem desses serviços para funcionar corretamente.<br>
-O app não garante segurança imediata.<br>
-E o serviço de proteção por palmas pode acionar com qualquer barulho alto.
-</p>
-
-<a class="btn-download" href="1.apk" download>
-    Baixe agora <br>
-    Versão 1 = versão final
-</a>
-
-<div class="box-form">
-
-<button 
-  onclick="window.location.href='eu.html'"
-  style="
-    background: linear-gradient(135deg, pink, lightpink);
-    color: #fff;
-    padding: 14px 26px;
-    border: none;
-    border-radius: 120px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  "
-  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.6)'"
-  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 6px 15px rgba(0,0,0,0.4)'"
->
-  Sobre o desenvolvedor 
-</button>
-
-</div>
-
-<img src="Print1.png">
-<img src="Print2.png">
-<img src="Print3.png">
-<img src="Print4.png">
-<img src="Print5.png">
-
-<footer class="footer">
-  <span id="typing"></span>
-</footer>
-
-
-    </div>
-</div>
-
-<br><br>
-
-<style>
-#titulo{
-  transition:
-    opacity .25s ease,
-    transform .25s ease,
-    color .25s ease;
-
-  user-select:none;
-  text-align:center;
-}
-
-.fade-out{
-  opacity:0;
-  transform:scale(.8) translateY(10px);
-}
-
-.fade-in{
-  opacity:1;
-  transform:scale(1.08) translateY(-3px);
-}
-</style>
-
-<script>
-const titulo = document.getElementById("titulo");
-
-const frases = [
-  { texto:"Tá pronta, princesa?", cor:"red" },
-  { texto:"Tá pronta, amiga?", cor:"blue" },
-  { texto:"Tá pronta, guerreira?", cor:"green" },
-  { texto:"Tá pronta, rainha?", cor:"purple" },
-  { texto:"Tá pronta, incrível?", cor:"orange" },
-  { texto:"Você é forte 💜", cor:"pink" },
-  { texto:"Você consegue 🌸", cor:"gold" },
-  { texto:"Seu valor é enorme", cor:"crimson" },
-  { texto:"Você não está sozinha", cor:"teal" },
-  { texto:"Continue brilhando ✨", cor:"violet" },
-
-  { texto:"Tudo vai melhorar", cor:"indigo" },
-  { texto:"Respira, vai dar certo", cor:"coral" },
-  { texto:"Você merece paz", cor:"salmon" },
-  { texto:"Sua voz importa", cor:"cyan" },
-  { texto:"Você é especial", cor:"magenta" },
-  { texto:"Acredite em você", cor:"lime" },
-  { texto:"Um passo por vez", cor:"brown" },
-  { texto:"Você é luz", cor:"navy" },
-  { texto:"Seu sorriso importa", cor:"olive" },
-  { texto:"Vai ficar tudo bem", cor:"maroon" },
-
-  { texto:"Você é incrível", cor:"turquoise" },
-  { texto:"Seu coração é forte", cor:"plum" },
-  { texto:"Nunca desista", cor:"orchid" },
-  { texto:"Você inspira pessoas", cor:"tomato" },
-  { texto:"Você merece amor", cor:"khaki" },
-  { texto:"Você é suficiente", cor:"peru" },
-  { texto:"Seu futuro é lindo", cor:"chocolate" },
-  { texto:"Você tem coragem", cor:"tan" },
-  { texto:"Você é importante", cor:"slateblue" },
-  { texto:"Sua história importa", cor:"deeppink" },
-
-  { texto:"Seu brilho é único", cor:"dodgerblue" },
-  { texto:"Você nasceu para vencer", cor:"firebrick" },
-  { texto:"Você é admirável", cor:"forestgreen" },
-  { texto:"Você pode recomeçar", cor:"hotpink" },
-  { texto:"Sua presença faz diferença", cor:"darkorange" },
-  { texto:"Você merece felicidade", cor:"darkviolet" },
-  { texto:"Você é maravilhosa", cor:"deepskyblue" },
-  { texto:"Você é rara", cor:"lightseagreen" },
-  { texto:"Você é acolhida aqui", cor:"mediumvioletred" },
-  { texto:"Você é muito querida", cor:"mediumblue" },
-
-  { texto:"Seu coração é gigante", cor:"mediumorchid" },
-  { texto:"Você é resiliente", cor:"midnightblue" },
-  { texto:"Você é capaz", cor:"moccasin" },
-  { texto:"Você ilumina vidas", cor:"royalblue" },
-  { texto:"Você merece descanso", cor:"rosybrown" },
-  { texto:"Seu caminho será lindo", cor:"sienna" },
-  { texto:"Você é mais forte do que pensa", cor:"springgreen" },
-  { texto:"Você é um presente", cor:"steelblue" },
-  { texto:"Seu esforço vale muito", cor:"thistle" },
-  { texto:"Você é extraordinária", cor:"wheat" },
-
-  { texto:"Você tem valor", cor:"yellowgreen" },
-  { texto:"Seu amanhã será melhor", cor:"aliceblue" },
-  { texto:"Você é cheia de vida", cor:"antiquewhite" },
-  { texto:"Você merece cuidado", cor:"aquamarine" },
-  { texto:"Seu coração importa", cor:"azure" },
-  { texto:"Você é única", cor:"beige" },
-  { texto:"Você é preciosa", cor:"bisque" },
-  { texto:"Você merece sorrir", cor:"blanchedalmond" },
-  { texto:"Seu sonho importa", cor:"blueviolet" },
-  { texto:"Você é muito amada", cor:"burlywood" },
-
-  { texto:"Você é incrível do seu jeito", cor:"cadetblue" },
-  { texto:"Sua força inspira", cor:"chartreuse" },
-  { texto:"Você consegue superar", cor:"cornflowerblue" },
-  { texto:"Você merece carinho", cor:"cornsilk" },
-  { texto:"Você é admirada", cor:"darkcyan" },
-  { texto:"Você é esperança", cor:"darkgoldenrod" },
-  { texto:"Seu coração é bonito", cor:"darkgreen" },
-  { texto:"Você merece recomeços", cor:"darkkhaki" },
-  { texto:"Você é valiosa", cor:"darkmagenta" },
-  { texto:"Você pode vencer isso", cor:"darkred" },
-
-  { texto:"Você é mais forte hoje", cor:"darksalmon" },
-  { texto:"Você merece tranquilidade", cor:"darkseagreen" },
-  { texto:"Você é incrível sempre", cor:"darkslateblue" },
-  { texto:"Você é digna de amor", cor:"darkturquoise" },
-  { texto:"Você é inspiração", cor:"dimgray" },
-  { texto:"Você merece paz interior", cor:"gainsboro" },
-  { texto:"Você é cheia de potencial", cor:"ghostwhite" },
-  { texto:"Você merece respeito", cor:"greenyellow" },
-  { texto:"Você é muito especial", cor:"honeydew" },
-  { texto:"Você merece apoio", cor:"ivory" },
-
-  { texto:"Você pode confiar em si", cor:"lavender" },
-  { texto:"Seu coração é precioso", cor:"lavenderblush" },
-  { texto:"Você é incrível todos os dias", cor:"lawngreen" },
-  { texto:"Você merece esperança", cor:"lemonchiffon" },
-  { texto:"Você é cheia de coragem", cor:"lightblue" },
-  { texto:"Você é um raio de luz", cor:"lightcoral" },
-  { texto:"Você merece amor verdadeiro", cor:"lightcyan" },
-  { texto:"Você é muito forte", cor:"lightgoldenrodyellow" },
-  { texto:"Você merece acolhimento", cor:"lightgreen" },
-  { texto:"Você é linda por dentro", cor:"lightpink" },
-
-  { texto:"Você é importante para alguém", cor:"lightsalmon" },
-  { texto:"Você merece viver feliz", cor:"lightyellow" },
-  { texto:"Você é gigante", cor:"linen" },
-  { texto:"Você é uma vencedora", cor:"mediumaquamarine" },
-  { texto:"Você merece um novo começo", cor:"mediumpurple" },
-  { texto:"Você é cheia de sonhos", cor:"mistyrose" },
-  { texto:"Você merece dias leves", cor:"navajowhite" },
-  { texto:"Você é cheia de esperança", cor:"oldlace" },
-  { texto:"Você merece ser ouvida", cor:"palegreen" },
-  { texto:"Você é mais forte que o medo", cor:"peachpuff" }
-];
-
-let index = parseInt(localStorage.getItem("fraseIndex")) || 0;
-
-if(index >= frases.length){
-  index = 0;
-}
-
-function aplicarFrase(){
-  titulo.innerText = frases[index].texto;
-  titulo.style.color = frases[index].cor;
-
-  localStorage.setItem("fraseIndex", index);
-}
-
-aplicarFrase();
-
-let startX = 0;
-
-titulo.addEventListener("touchstart", (e)=>{
-  startX = e.touches[0].clientX;
-});
-
-titulo.addEventListener("touchend", (e)=>{
-  const endX = e.changedTouches[0].clientX;
-
-  if(Math.abs(endX - startX) > 50){
-
-    titulo.classList.add("fade-out");
-
-    setTimeout(()=>{
-
-      index++;
-
-      if(index >= frases.length){
-        index = 0;
-      }
-
-      aplicarFrase();
-
-      titulo.classList.remove("fade-out");
-      titulo.classList.add("fade-in");
-
-      setTimeout(()=>{
-        titulo.classList.remove("fade-in");
-      },250);
-
-    },200);
-  }
-});
-</script>
-
-
-
-<style>
-.footer{
-  width:100%;
-  padding:20px;
-  text-align:center;
-  font-size:16px;
-  color: skyblue;
+      <div class="label">
+    Mensagem final
+  </div>
   
-}
+<h1 class="title">Então, o que me diz?</h1>
 
-#typing::after{
-  content:"|";
-  animation:blink 0.7s infinite;
-}
+    <p class="subtitle">
+      Depois disso aqui… não tem mais como voltar pro básico 😮‍🔥
+    </p>
 
-@keyframes blink{
-  50%{
-    opacity:0;
-  }
-}
-</style>
+    <h2 id="titulo" class="dynamic-title">Tá pronta?</h2>
 
-<script>
-const text = 'Feito com ❤️ por mulher-amparada:';
-const typing = document.getElementById("typing");
+    <p class="subtitle">
+      Vem sentir isso na prática 💖
+    </p>
+    
+<br><br><br><br>
+  <div class="label">
+    Importante
+  </div>
+  
+    <!-- CARD DE ALERTA -->
+    <div class="warning-card">
+      
+      <p>
+        Este aplicativo é uma ferramenta complementar.<br>
+        Ele não substitui serviços oficiais ou emergenciais.
+      </p>
 
-let i = 0;
+      <p>
+        Algumas funções dependem de serviços externos.<br>
+        O app não garante segurança imediata.
+      </p>
+    </div>
 
-function escrever() {
-  if (i < text.length) {
-    typing.textContent += text.charAt(i);
-    i++;
-    setTimeout(escrever, 80);
-  }
-}
+<br><br><br><br>
+  <div class="label">
+    Botão de download
+  </div>
+  
+    <!-- BOTÃO PRINCIPAL -->
+    <a class="btn-download" href="1.apk" download>
+      Baixar aplicativo<br>
+      <span>Versão final</span>
+    </a>
+    
+    <br><br><br><br>
 
-escrever();
-</script>
+  <div class="label">
+    Sobre mim
+  </div>
+  
+  
+    <!-- BOTÃO SECUNDÁRIO -->
+    <div class="box-form">
+      <button class="btn-secondary" onclick="window.location.href='eu.html'">
+        Sobre o desenvolvedor
+      </button>
+    </div>
 
+<br><br><br><br>
+
+  <div class="label">
+    Screenshots do app
+  </div>
+  
+    <!-- GALERIA -->
+    <div class="gallery">
+      <img src="Print1.png">
+      <img src="Print2.png">
+      <img src="Print3.png">
+      <img src="Print4.png">
+      <img src="Print5.png">
+      <img src="Print6.png">
+    </div>
+
+  </div>
+</div>
+
+<br><br><br><br>
 <!-- BARRA INFERIOR ONE UI -->
 <div class="toggle" id="puxador">
   <div class="alavanca" id="puxar">
@@ -672,6 +537,75 @@ toggle.onclick = () => {
     }
   }, 300);
 };
+
+const titulo = document.getElementById("titulo");
+
+const frases = [
+  { texto:"Tá pronta, princesa?", cor:"red" },
+  { texto:"Tá pronta, amiga?", cor:"blue" },
+  { texto:"Tá pronta, guerreira?", cor:"green" },
+  { texto:"Tá pronta, rainha?", cor:"purple" },
+  { texto:"Tá pronta, incrível?", cor:"orange" },
+  { texto:"Você é forte 💜", cor:"pink" },
+  { texto:"Você consegue 🌸", cor:"gold" },
+  { texto:"Seu valor é enorme", cor:"crimson" },
+  { texto:"Você não está sozinha", cor:"teal" },
+  { texto:"Continue brilhando ✨", cor:"violet" }
+];
+
+if (titulo) {
+
+  let index = Number(localStorage.getItem("fraseIndex"));
+
+  if (isNaN(index) || index < 0 || index >= frases.length) {
+    index = 0;
+  }
+
+  function aplicarFrase() {
+    const frase = frases[index];
+
+    titulo.style.opacity = "0";
+    titulo.style.transform = "scale(0.9)";
+
+    setTimeout(() => {
+      titulo.innerText = frase.texto;
+      titulo.style.color = frase.cor;
+
+      titulo.style.opacity = "1";
+      titulo.style.transform = "scale(1)";
+    }, 180);
+
+    localStorage.setItem("fraseIndex", index);
+  }
+
+  function nextFrase() {
+    index = (index + 1) % frases.length;
+    aplicarFrase();
+  }
+
+  aplicarFrase();
+
+  let startX = 0;
+
+  // touch (mobile)
+  titulo.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  titulo.addEventListener("touchend", (e) => {
+    const endX = e.changedTouches[0].clientX;
+
+    if (Math.abs(endX - startX) > 50) {
+      nextFrase();
+    }
+  });
+
+  // click (desktop)
+  titulo.addEventListener("click", () => {
+    nextFrase();
+  });
+
+}
 </script>
 
 </body>
