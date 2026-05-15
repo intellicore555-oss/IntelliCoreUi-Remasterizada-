@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Mulher Amparada — Aplicativo Finalizado</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Quicksand',sans-serif;
+    background:#000;
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
+    padding:70px 25px;
+}
+
+/* FUNDO */
+
+
+/* CONTEUDO */
+
+main{
+    position:relative;
+    z-index:2;
+    max-width:950px;
+    margin:auto;
+}
+
+/* TOPO */
+
+.hero{
+    margin-bottom:70px;
+}
+
+.top-title{
+    display:inline-flex;
+    align-items:center;
+    gap:15px;
+
+    padding:14px 22px;
+
+    border:2px dashed rgba(255,255,255,0.22);
+    border-radius:999px;
+
+    margin-bottom:35px;
+
+    animation:fadeUp 1s ease;
+}
+
+/* BOLINHA */
+
+.app-icon{
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    overflow:hidden;
+    flex-shrink:0;
+
+    border:2px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+    0 0 25px rgba(255,79,163,0.35),
+    0 0 60px rgba(255,79,163,0.15);
+}
+
+.app-icon img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.top-title span{
+    font-size:0.95rem;
+    letter-spacing:3px;
+    font-weight:700;
+    text-transform:uppercase;
+    color:#ff93c7;
+}
+
+/* TITULO */
+
+h1{
+    font-size:clamp(3rem,8vw,6rem);
+    line-height:1;
+    margin-bottom:30px;
+    font-weight:700;
+
+    animation:fadeUp 1.2s ease;
+}
+
+.highlight{
+    color:#ff4fa3;
+    text-shadow:0 0 30px rgba(255,79,163,0.4);
+}
+
+.line{
+    width:140px;
+    height:5px;
+    border-radius:999px;
+    background:#ff4fa3;
+    margin-bottom:40px;
+}
+
+/* TEXTO */
+
+.description{
+    font-size:1.2rem;
+    line-height:2;
+    color:#d8d8d8;
+    max-width:850px;
+
+    animation:fadeUp 1.4s ease;
+}
+
+.description strong{
+    color:white;
+    font-weight:700;
+}
+
+/* SECTIONS */
+
+.section{
+    margin-top:80px;
+}
+
+.section-title{
+    font-size:1.6rem;
+    font-weight:700;
+    margin-bottom:25px;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.section-title::before{
+    content:"";
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:#ff4fa3;
+
+    box-shadow:0 0 15px #ff4fa3;
+}
+
+.section p{
+    font-size:1.1rem;
+    line-height:2;
+    color:#cfcfcf;
+}
+
+/* DESTAQUES IMPORTANTES */
+
+.important{
+    color:white;
+    font-weight:700;
+    font-size:1.15rem;
+}
+
+.final-date{
+    margin-top:80px;
+    font-size:1rem;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:#8f8f8f;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:90px;
+    padding-top:30px;
+    border-top:1px solid rgba(255,255,255,0.08);
+
+    color:#666;
+    font-size:0.95rem;
+}
+
+/* ANIMACAO */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* RESPONSIVO */
+
+@media(max-width:700px){
+
+    body{
+        padding:50px 20px;
+    }
+
+    .description{
+        font-size:1rem;
+    }
+
+    .section p{
+        font-size:1rem;
+    }
+
+    .top-title{
+        width:100%;
+        justify-content:center;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<main>
+
+    <section class="hero">
+
+        <div class="top-title">
+
+            <div class="app-icon">
+                <img src="user1.png" alt="Ícone Mulher Amparada">
+            </div>
+
+            <span>Mulher Amparada</span>
+
+        </div>
+
+        <h1>
+            Aplicativo
+            <br>
+            <span class="highlight">Finalmente Finalizado</span>
+        </h1>
+
+        <div class="line"></div>
+
+        <p class="description">
+            A partir do dia <strong>15/05/2026</strong>,
+            o aplicativo <strong>Mulher Amparada</strong>
+            está oficialmente finalizado.
+            <br><br>
+            Depois de muito desenvolvimento,
+            evolução constante e dedicação ao projeto,
+            a plataforma chega à sua versão completa.
+        </p>
+
+    </section>
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Objetivo do Projeto
+        </h2>
+
+        <p>
+            O aplicativo foi desenvolvido para oferecer
+            suporte, acolhimento e tecnologia voltada
+            para proteção e segurança feminina.
+        </p>
+
+    </section>
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Desenvolvimento
+        </h2>
+
+        <p>
+            Cada atualização do projeto foi criada
+            pensando em desempenho, estabilidade
+            e uma experiência moderna para as usuárias.
+        </p>
+
+    </section>
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Finalização Oficial
+        </h2>
+
+        <p class="important">
+            O projeto foi oficialmente concluído em 15 de Maio de 2026.
+        </p>
+
+    </section>
+
+    <div class="final-date">
+        FINALIZAÇÃO OFICIAL • 15/05/2026
+    </div>
+
+    <footer>
+        Mulher Amparada © 2026
+    </footer>
+
+</main>
+
+</body>
+</html>
