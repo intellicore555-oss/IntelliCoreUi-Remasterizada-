@@ -379,9 +379,9 @@ height: 28px;
    
 
 <br><br><br><br>
-  <div class="label">
-    Botões 
-  </div>
+  <h1 class="title">
+    Botões:
+  </h1>
   
     <!-- BOTÃO PRINCIPAL -->
     <a class="btn-download" href="1.apk" download>
@@ -489,74 +489,6 @@ toggle.onclick = () => {
   }, 300);
 };
 
-const titulo = document.getElementById("titulo");
-
-const frases = [
-  { texto:"Tá pronta, princesa?", cor:"red" },
-  { texto:"Tá pronta, amiga?", cor:"blue" },
-  { texto:"Tá pronta, guerreira?", cor:"green" },
-  { texto:"Tá pronta, rainha?", cor:"purple" },
-  { texto:"Tá pronta, incrível?", cor:"orange" },
-  { texto:"Você é forte 💜", cor:"pink" },
-  { texto:"Você consegue 🌸", cor:"gold" },
-  { texto:"Seu valor é enorme", cor:"crimson" },
-  { texto:"Você não está sozinha", cor:"teal" },
-  { texto:"Continue brilhando ✨", cor:"violet" }
-];
-
-if (titulo) {
-
-  let index = Number(localStorage.getItem("fraseIndex"));
-
-  if (isNaN(index) || index < 0 || index >= frases.length) {
-    index = 0;
-  }
-
-  function aplicarFrase() {
-    const frase = frases[index];
-
-    titulo.style.opacity = "0";
-    titulo.style.transform = "scale(0.9)";
-
-    setTimeout(() => {
-      titulo.innerText = frase.texto;
-      titulo.style.color = frase.cor;
-
-      titulo.style.opacity = "1";
-      titulo.style.transform = "scale(1)";
-    }, 180);
-
-    localStorage.setItem("fraseIndex", index);
-  }
-
-  function nextFrase() {
-    index = (index + 1) % frases.length;
-    aplicarFrase();
-  }
-
-  aplicarFrase();
-
-  let startX = 0;
-
-  // touch (mobile)
-  titulo.addEventListener("touchstart", (e) => {
-    startX = e.touches[0].clientX;
-  });
-
-  titulo.addEventListener("touchend", (e) => {
-    const endX = e.changedTouches[0].clientX;
-
-    if (Math.abs(endX - startX) > 50) {
-      nextFrase();
-    }
-  });
-
-  // click (desktop)
-  titulo.addEventListener("click", () => {
-    nextFrase();
-  });
-
-}
 </script>
 
 </body>
