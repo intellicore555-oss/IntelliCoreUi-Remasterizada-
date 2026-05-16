@@ -300,6 +300,38 @@ height: 30px;
     transform: scale(1);
   }
 }
+
+.warning-card{
+  margin:30px auto;
+  padding:18px 20px;
+
+  border-radius:16px;
+  background:rgba(255,77,166,.06);
+  border:1px solid rgba(255,77,166,.25);
+
+  color:#ffd1e8;
+  font-size:14px;
+  line-height:1.6;
+
+  backdrop-filter:blur(12px);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.4),
+    inset 0 1px 0 rgba(255,255,255,.05);
+
+  position:relative;
+}
+
+.warning-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:10%;
+  width:3px;
+  height:80%;
+  background:linear-gradient(#ff4fa3,#ff1e85);
+  border-radius:10px;
+}
 </style>
 </head>
 
@@ -522,6 +554,21 @@ height: 30px;
         <p>Você pode aceitar ou negar tudo, e mudar depois quando quiser 💕</p>
 
         <p>Prontinho… agora é só aproveitar 🌷</p>
+    </div>
+
+<h1>Importante!</h1>
+
+<div class="warning-card">
+      <p>Quando ir para a pagina de download, lembre-se, que:</p>
+      <p>
+        Este aplicativo é uma ferramenta complementar.<br>
+        Ele não substitui serviços oficiais ou emergenciais.
+      </p>
+
+      <p>
+        Algumas funções dependem de serviços externos.<br>
+        O app não garante segurança imediata.
+      </p>
     </div>
 </div>
 
