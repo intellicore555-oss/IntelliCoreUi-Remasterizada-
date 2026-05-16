@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tecnologias do App</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    background:#000;
+    color:#fff;
+    font-family:'Quicksand', sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:90%;
+    max-width:750px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:2rem;
+    font-weight:600;
+}
+
+.card{
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:16px;
+    padding:18px 20px;
+    margin-bottom:12px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.02);
+    border-color:rgba(255,255,255,0.25);
+}
+
+.title{
+    font-size:1.1rem;
+    font-weight:600;
+}
+
+.desc{
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transition:0.4s ease;
+    font-size:0.95rem;
+    color:rgba(255,255,255,0.7);
+    margin-top:0;
+}
+
+.card.active .desc{
+    max-height:200px;
+    opacity:1;
+    margin-top:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Tecnologias utilizadas no app</h1>
+
+<div class="card" onclick="toggle(this)">
+  <div class="title">Smali</div>
+  <div class="desc">
+    Linguagem usada no nível baixo de apps Android. É o código que aparece após descompilar APKs e permite manipulação direta da lógica interna do aplicativo.
+  </div>
+</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="title">Kotlin</div>
+  <div class="desc">
+    Linguagem oficial do Android usada para criar o app. Moderna, segura e totalmente integrada com o sistema Android.
+  </div>
+</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="title">HTML, CSS e JS</div>
+  <div class="desc">
+    Usados para criar páginas internas, interfaces web e possíveis telas híbridas dentro do aplicativo.
+  </div>
+</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="title">XML</div>
+  <div class="desc">
+    Responsável pelos layouts do Android, como telas, botões, listas e widgets estruturais do app.
+  </div>
+</div>
+
+<div class="card" onclick="toggle(this)">
+  <div class="title">SVG</div>
+  <div class="desc">
+    Formato de imagens vetoriais usado para ícones. Ele mantém qualidade perfeita em qualquer tamanho sem perder nitidez.
+  </div>
+</div>
+
+</div>
+
+<script>
+function toggle(el){
+    el.classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
