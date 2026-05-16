@@ -320,6 +320,7 @@ height: 30px;
     inset 0 1px 0 rgba(255,255,255,.05);
 
   position:relative;
+margin-top: 0;
 }
 
 .warning-card::before{
@@ -332,6 +333,35 @@ height: 30px;
   background:linear-gradient(#ff4fa3,#ff1e85);
   border-radius:10px;
 }
+
+.pill{
+  display:inline-block;
+  padding:12px 22px;
+
+  border-radius:999px;
+
+  color: pink;
+  font-weight:600;
+  letter-spacing:1px;
+
+  background:rgba(255,255,255,0.08);
+
+  border:1px solid gray;
+
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+
+  transition:.3s ease;
+}
+
+.pill:hover{
+  transform:scale(1.05);
+  background:rgba(255,255,255,0.12);
+}
 </style>
 </head>
 
@@ -340,7 +370,13 @@ height: 30px;
 <section class="section seo-section">
   <div class="shape circle"></div>
 
-  <h1>Mulher Amparada: Aplicativo de Segurança Feminina com Botão SOS e Localização em Tempo Real, (“Mulher Amparada É uma marca e não qualquer app genérico)</h1>
+<div class="pill">
+  Mulher Amparada
+</div>
+  
+<br><br>
+
+  <h1>Aplicativo de Segurança Feminina com Botão SOS e Localização em Tempo Real, (“Mulher Amparada É uma marca e não qualquer app genérico)</h1>
 
   <p>
     O <strong>Mulher Amparada</strong> é um aplicativo de segurança feminina desenvolvido para oferecer proteção pessoal em situações de risco, como violência doméstica, assédio, perseguição e emergências urbanas.
@@ -556,6 +592,7 @@ height: 30px;
         <p>Prontinho… agora é só aproveitar 🌷</p>
     </div>
 
+<br>
 <h1>Importante!</h1>
 
 <div class="warning-card">
