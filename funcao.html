@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Central de Proteção</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Quicksand',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background: #000;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,.14);
+    border-radius:999px;
+}
+
+/* HEADER */
+
+.topbar{
+    position:sticky;
+    top:0;
+    z-index:999;
+
+    backdrop-filter:blur(18px);
+    background:rgba(0,0,0,.55);
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+    padding:18px 25px;
+}
+
+.nav{
+    max-width:1300px;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:700;
+    letter-spacing:-1px;
+}
+
+.logo span{
+    opacity:.45;
+}
+
+.navlinks{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.navlinks a{
+    color:#d7d7d7;
+    text-decoration:none;
+
+    padding:10px 16px;
+    border-radius:14px;
+
+    transition:.25s ease;
+}
+
+.navlinks a:hover{
+    background:rgba(255,255,255,.08);
+    color:white;
+}
+
+/* HERO */
+
+.hero{
+    position:relative;
+    z-index:2;
+
+    max-width:1300px;
+    margin:auto;
+
+    padding:90px 25px 60px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:12px 18px;
+    border-radius:999px;
+
+    color:pink;
+
+    margin-bottom:35px;
+
+    backdrop-filter:blur(12px);
+}
+
+.title{
+    font-size:clamp(52px,8vw,105px);
+    line-height:.95;
+    font-weight:700;
+    letter-spacing:-4px;
+
+    margin-bottom:30px;
+}
+
+/* TEXTO */
+
+.text{
+    max-width:1100px;
+}
+
+.section{
+    position:relative;
+
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:30px;
+
+    padding:30px;
+
+    margin-top:22px;
+
+    backdrop-filter:blur(16px);
+
+    transition:.3s ease;
+
+    color:#d6d6d6;
+    line-height:1.9;
+    font-size:17px;
+}
+
+.section:hover{
+    transform:translateY(-5px);
+    border-color:rgba(255,255,255,.16);
+    background:rgba(255,255,255,.05);
+}
+
+.subtitle{
+    color:white;
+    font-size:28px;
+    font-weight:700;
+    line-height:1.3;
+
+    margin-bottom:14px;
+
+    letter-spacing:-1px;
+}
+
+/* BOTÕES */
+
+.actions{
+    margin-top:40px;
+
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:18px 26px;
+    border-radius:18px;
+
+    text-decoration:none;
+
+    transition:.25s ease;
+
+    font-weight:600;
+}
+
+.btn-primary{
+    background:white;
+    color:black;
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+}
+
+.btn-secondary{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+
+    color:white;
+}
+
+.btn-secondary:hover{
+    background:rgba(255,255,255,.09);
+}
+
+/* STATS */
+
+.stats{
+    margin-top:60px;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.stat{
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:28px;
+    border-radius:28px;
+
+    backdrop-filter:blur(15px);
+
+    transition:.3s ease;
+}
+
+.stat:hover{
+    transform:translateY(-4px);
+    border-color:rgba(255,255,255,.16);
+}
+
+.stat h2{
+    font-size:42px;
+    margin-bottom:8px;
+}
+
+.stat p{
+    color:#bdbdbd;
+    line-height:1.7;
+}
+
+/* CONTAINER */
+
+.container{
+    position:relative;
+    z-index:2;
+
+    max-width:1300px;
+    margin:auto;
+
+    padding:20px 25px 120px;
+}
+
+/* TITULOS */
+
+.section-title{
+    font-size:52px;
+    letter-spacing:-2px;
+
+    margin-bottom:30px;
+}
+
+/* GRID */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:24px;
+}
+
+/* CARDS */
+
+.card{
+    position:relative;
+
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:30px;
+
+    padding:32px;
+
+    backdrop-filter:blur(16px);
+
+    transition:.35s ease;
+
+    width:100%;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    border-color:rgba(255,255,255,.18);
+    background:rgba(255,255,255,.05);
+}
+
+.icon{
+    width:70px;
+    height:70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.06);
+
+    font-size:30px;
+
+    margin-bottom:24px;
+}
+
+.card h3{
+    font-size:30px;
+    margin-bottom:18px;
+
+    letter-spacing:-1px;
+}
+
+.card p{
+    color:#d0d0d0;
+    line-height:1.9;
+    font-size:17px;
+}
+
+/* LISTA */
+
+.list{
+    margin-top:20px;
+
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.item{
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    padding:15px 18px;
+
+    border-radius:18px;
+
+    color:#d7d7d7;
+
+    line-height:1.7;
+}
+
+/* FOOTER */
+
+.footer{
+    margin-top:90px;
+
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:45px;
+    border-radius:32px;
+
+    text-align:center;
+
+    color:#cfcfcf;
+    line-height:2;
+
+    backdrop-filter:blur(14px);
+}
+
+/* RESPONSIVO */
+
+@media(max-width:850px){
+
+    .hero{
+        padding-top:60px;
+    }
+
+    .title{
+        letter-spacing:-2px;
+    }
+
+    .subtitle{
+        font-size:23px;
+    }
+
+    .section-title{
+        font-size:38px;
+    }
+
+    .card,
+    .section{
+        padding:24px;
+    }
+
+    .nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .actions{
+        flex-direction:column;
+    }
+
+    .badge{
+        width:100%;
+        justify-content:center;
+    }
+
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+
+<div class="badge">
+Mulher Amparada 
+</div>
+
+<div class="title">
+Todas as Funções do App
+</div>
+
+<div class="text">
+
+<div class="section">
+
+<div class="subtitle">
+Botão de Pânico:
+</div>
+
+Botão de Pânico, com ligação ao 180 de forma direta no primeiro clique.
+
+</div>
+
+<div class="section">
+
+<div class="subtitle">
+Proteção por Barulho:
+</div>
+
+Ative a proteção, faça barulho alto e ele liga para o 180.
+
+</div>
+
+<div class="section">
+
+<div class="subtitle">
+Balançar o Celular para Pedir Ajuda:
+</div>
+
+Ative e, ao chacoalhar o celular, ele liga para o 180.
+
+</div>
+
+<div class="section">
+
+<div class="subtitle">
+Área Protegida:
+</div>
+
+Se estiver cadastrado no celular, com Biometric Prompt junto com Device Credential e autenticação weak, pode desbloquear essa área com impressão digital, rosto, PIN, padrão, senha e outros métodos.
+
+</div>
+
+<div class="section">
+
+<div class="subtitle">
+Nela, contém:
+</div>
+
+</div>
+
+<div class="section">
+
+<div class="subtitle">
+Calendário Menstrual:
+</div>
+
+Registre como dói cada dia e, com isso, o aplicativo monta um calendário.
+
+</div>
+
+<div class="section">
+
+<div class="subtitle">
+Rotina:
+</div>
+
+Sistema de pontos, com registro de comidas e bebidas boas e ruins, bem como a adição de registro de exercícios físicos fáceis, médios ou difíceis e contagem de tempo de cada um deles, além de sistema de nível e conquistas.
+
+</div>
+
+<div class="section">
+
+<div class="subtitle">
+Diário:
+</div>
+
+Usando LocalStorage, a usuária poderá anotar o que quiser. Com a senha, ficará seguro e também não some, pois estará guardado.
+
+</div>
+
+<div class="section">
+
+<div class="subtitle">
+Relógio:
+</div>
+
+Mostra o mapa do local atual, o país e outros dados, bem como o ano, semestre, bimestre, mês, quinzena, semana, dia, hora, minuto e segundo.
+
+Além de mostrar hora, minuto e segundo de todos os países.
+
+</div>
+
+<div class="section">
+
+<div class="subtitle">
+E Mais:
+</div>
+
+</div>
+
+<div class="section">
+
+<div class="subtitle">
+Emergência:
+</div>
+
+Saindo dessa área, existem botões que abrem o aplicativo nativo do telefone nos números 190, 191, 192 e 180.
+
+</div>
+
+<div class="section">
+
+<div class="subtitle">
+Contatos de Confiança:
+</div>
+
+Além dos contatos de confiança, clicando no primeiro botão você seleciona e salva o contato. O botão abaixo envia um pedido de ajuda para ele.
+
+</div>
+
+<div class="section">
+
+<div class="subtitle">
+Widgets:
+</div>
+
+Já saindo do app, temos os widgets.
+
+</div>
+
+<div class="section">
+
+<div class="subtitle">
+Widget SOS:
+</div>
+
+O primeiro é um widget de SOS que, quando clicado, abre o aplicativo de telefone com o número 180 já discado.
+
+</div>
+
+<div class="section">
+
+<div class="subtitle">
+Widget de Localização:
+</div>
+
+O segundo, o de localização, monta o link do Google Maps, e a usuária pode mandar para quem quiser.
+
+</div>
+
+<div class="section">
+
+<div class="subtitle">
+Widget de Proteção Sonora:
+</div>
+
+E o terceiro é apenas um acesso rápido para o serviço de proteção por palmas.
+
+</div>
+
+<div class="section">
+
+<div class="subtitle">
+Compartilhamento Rápido de Localização:
+</div>
+
+Além disso, existe um botão dentro do app que pega a localização atual, monta um link do Google Maps e já manda para o WhatsApp do 180, precisando apenas clicar no botão de enviar.
+
+</div>
+
+</div>
+
+
+</body>
+</html>
