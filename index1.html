@@ -384,22 +384,15 @@ height: 28px;
   </h1>
   
     <!-- BOTÃO PRINCIPAL -->
-<a class="btn-download"
-   href="2.apk"
-   target="_blank"
-   rel="noopener">
-  Baixar aplicativo<br>
-  <span>Versão 1.1</span>
+   <a class="btn-download" href="2.apk" download>  
+      Baixar aplicativo<br>  
+      <span>Versão 1.1</span>  
+    </a> 
+    
+      <a class="btn-download" href="1.apk" download>  
+  Baixar aplicativo<br>  
+  <span>Versão 1</span>  
 </a>
-
-<a class="btn-download"
-   href="1.apk"
-   target="_blank"
-   rel="noopener">
-  Baixar aplicativo<br>
-  <span>Versão 1</span>
-</a>
-   
   
   
     <!-- BOTÃO SECUNDÁRIO -->
@@ -499,45 +492,6 @@ toggle.onclick = () => {
     }
   }, 300);
 };
-
-</script>
-
-<script>
-
-// ================= DETECÇÃO DE WEBVIEW =================
-function isWebView() {
-  const ua = navigator.userAgent || navigator.vendor || window.opera;
-
-  return (
-    ua.includes("wv") ||                 // Android WebView
-    ua.includes("WebView") ||           // WebView explícito
-    (ua.includes("Android") && !ua.includes("Chrome")) ||
-    typeof Android !== "undefined"     // apps híbridos (Kotlin/JS bridge)
-  );
-}
-
-// ================= ABRIR NO NAVEGADOR =================
-function openInBrowser() {
-  const url = window.location.href;
-
-  // tenta forçar Chrome (Android)
-  window.location.href =
-    "intent:" + url + "#Intent;scheme=https;package=com.android.chrome;end;";
-}
-
-// ================= EXECUÇÃO AUTOMÁTICA =================
-window.addEventListener("load", () => {
-
-  if (isWebView()) {
-
-    // pequeno delay para evitar crash em apps WebView
-    setTimeout(() => {
-      openInBrowser();
-    }, 600);
-
-  }
-
-});
 
 </script>
 
