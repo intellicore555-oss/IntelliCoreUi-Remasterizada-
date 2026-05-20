@@ -889,8 +889,54 @@ pirula.addEventListener("click", () => {
 </script>
 
 <script>
-const preloadIcon = new Image();
-preloadIcon.src = "user1.png";
+const request = indexedDB.open("AppDB", 1);
+
+request.onupgradeneeded = () => {
+  const db = request.result;
+
+  if(!db.objectStoreNames.contains("images")){
+    db.createObjectStore("images");
+  }
+};
+
+request.onsuccess = async () => {
+
+  const db = request.result;
+
+  // tenta pegar imagem salva
+  const tx = db.transaction("images", "readonly");
+  const store = tx.objectStore("images");
+
+  const getReq = store.get("userIcon");
+
+  getReq.onsuccess = async () => {
+
+    // se já existir
+    if(getReq.result){
+
+      const url = URL.createObjectURL(getReq.result);
+
+      document.querySelector(".icon").style.backgroundImage =
+      `url(${url})`;
+
+    }else{
+
+      // baixa imagem
+      const response = await fetch("user1.png");
+      const blob = await response.blob();
+
+      // salva
+      const tx2 = db.transaction("images", "readwrite");
+      tx2.objectStore("images").put(blob, "userIcon");
+
+      // usa
+      const url = URL.createObjectURL(blob);
+
+      document.querySelector(".icon").style.backgroundImage =
+      `url(${url})`;
+    }
+  };
+};
 </script>
 
 </body>
