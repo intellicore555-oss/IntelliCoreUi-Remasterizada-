@@ -852,14 +852,6 @@ function irParaTermos() {
 </script>
 
 <script>
-const pirula = document.querySelector(".pirula");
-
-pirula.addEventListener("click", () => {
-  pirula.classList.toggle("active");
-});
-</script>
-
-<script>
 // força aceleração da GPU
 document.querySelectorAll(".pirula, .menu, .menu button").forEach(el => {
   el.style.transform = "translateZ(0)";
@@ -889,54 +881,35 @@ pirula.addEventListener("click", () => {
 </script>
 
 <script>
-const request = indexedDB.open("AppDB", 1);
+const pirula = document.querySelector(".pirula");
 
-request.onupgradeneeded = () => {
-  const db = request.result;
+// GPU
+document.querySelectorAll(".pirula, .menu, .menu button, .icon").forEach(el => {
+  el.style.transform = "translateZ(0)";
+  el.style.backfaceVisibility = "hidden";
+  el.style.webkitBackfaceVisibility = "hidden";
+});
 
-  if(!db.objectStoreNames.contains("images")){
-    db.createObjectStore("images");
-  }
-};
+// abrir e fechar
+pirula.addEventListener("click", (e) => {
 
-request.onsuccess = async () => {
+  // impede fechar quando clicar nos botões
+  if(e.target.closest("button")) return;
 
-  const db = request.result;
+  pirula.style.willChange =
+  "width,height,opacity,transform";
 
-  // tenta pegar imagem salva
-  const tx = db.transaction("images", "readonly");
-  const store = tx.objectStore("images");
+  requestAnimationFrame(() => {
+    pirula.classList.toggle("active");
+  });
 
-  const getReq = store.get("userIcon");
+  clearTimeout(window.pirulaTimer);
 
-  getReq.onsuccess = async () => {
+  window.pirulaTimer = setTimeout(() => {
+    pirula.style.willChange = "auto";
+  }, 450);
 
-    // se já existir
-    if(getReq.result){
-
-      const url = URL.createObjectURL(getReq.result);
-
-      document.querySelector(".icon").style.backgroundImage =
-      `url(${url})`;
-
-    }else{
-
-      // baixa imagem
-      const response = await fetch("user1.png");
-      const blob = await response.blob();
-
-      // salva
-      const tx2 = db.transaction("images", "readwrite");
-      tx2.objectStore("images").put(blob, "userIcon");
-
-      // usa
-      const url = URL.createObjectURL(blob);
-
-      document.querySelector(".icon").style.backgroundImage =
-      `url(${url})`;
-    }
-  };
-};
+});
 </script>
 
 </body>
